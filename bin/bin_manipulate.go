@@ -1,14 +1,13 @@
-package main
+package bin
 
 import (
-	"os"
-	"fmt"
-	"encoding/gob"
-	"log"
-	"bytes"
 	"bufio"
+	"bytes"
+	"encoding/gob"
+	"fmt"
+	"log"
+	"os"
 )
-
 
 type P struct {
 	X, Y, Z int
@@ -29,7 +28,7 @@ func txt_write() {
 	bytes, _ := file1.Write(data)
 	fmt.Printf("Wrote %d bytes to file \n", bytes)
 
-	file2, _:= os.Open("data2")
+	file2, _ := os.Open("data2")
 	defer file2.Close()
 
 	read2 := make([]byte, len(data))
@@ -51,7 +50,6 @@ func main() {
 		log.Fatal("encode error:", err)
 	}
 
-
 	// Decode (receive) the value.
 	var q Q
 	err = dec.Decode(&q)
@@ -60,7 +58,6 @@ func main() {
 	}
 	fmt.Println(q)
 	fmt.Printf("%q: {%d,%d}\n", q.Name, *q.X, *q.Y)
-
 
 	outputFile, outputError := os.OpenFile("output.dat", os.O_WRONLY|os.O_CREATE, 0666)
 	if outputError != nil {
@@ -72,10 +69,9 @@ func main() {
 	outputWriter := bufio.NewWriter(outputFile)
 	outputString := "hello world!\n"
 
-	for i:=0; i<10; i++ {
+	for i := 0; i < 10; i++ {
 		outputWriter.WriteString(outputString)
 	}
 	outputWriter.Flush()
 
 }
-
