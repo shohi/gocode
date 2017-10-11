@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"runtime"
 	"strings"
 	"text/tabwriter"
 )
@@ -22,5 +23,6 @@ func printEnv() {
 }
 
 func main() {
-	printEnv()
+	// printEnv()
+	fmt.Println(runtime.Caller(1))
 }
