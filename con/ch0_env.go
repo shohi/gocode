@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
-	"runtime"
 	"strings"
 	"text/tabwriter"
+	"time"
 )
 
 func printEnv() {
@@ -22,7 +22,25 @@ func printEnv() {
 	}
 }
 
+type ST struct {
+	Value int
+}
+
+func emptyStructCompare() {
+	var a, b struct{}
+	var c, d ST
+	var t time.Time
+	fmt.Printf("a ==> %p, %v\n", &a, a)
+	fmt.Printf("b ==> %p, %v\n", &b, b)
+
+	fmt.Printf("c ==> %p, %v\n", &c, d)
+	fmt.Printf("d ==> %p, %v\n", &d, d)
+	fmt.Printf("time ==> %v", t)
+
+}
+
 func main() {
 	// printEnv()
-	fmt.Println(runtime.Caller(1))
+	// fmt.Println(runtime.Caller(1))
+	emptyStructCompare()
 }
