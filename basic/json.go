@@ -8,10 +8,19 @@ type hello struct {
 	B string `json:"fieldB"`
 }
 
-func main() {
+func marshal() {
 	bs, _ := json.Marshal(hello{10, "hello"})
 	// fmt.Println(string(bs))
 
 	bs, _ = json.MarshalIndent(hello{10, "hello"}, "", "  ")
 	fmt.Println(string(bs))
+}
+
+func rawmessage() {
+	aa := json.RawMessage("hello")
+	fmt.Println(string(aa))
+}
+
+func main() {
+	rawmessage()
 }
