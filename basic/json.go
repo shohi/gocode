@@ -18,6 +18,7 @@ func marshal() {
 
 func rawmessage() {
 	aa := json.RawMessage("hello")
+	fmt.Println(aa)
 	fmt.Println(string(aa))
 }
 
