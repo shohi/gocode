@@ -16,3 +16,6 @@
 #
 .idea
 .vscode
+
+# remove personal setting directory
+setting/
