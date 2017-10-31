@@ -13,6 +13,8 @@ type SA struct {
 	A
 }
 
+type EmptyStruct struct{}
+
 type IA struct {
 	word string
 }
@@ -28,5 +30,11 @@ func TestStruct(t *testing.T) {
 
 	fmt.Println(aa)
 	fmt.Println(bb)
+
+}
+
+func TestEmptyStruct(t *testing.T) {
+	ss := EmptyStruct{}
+	fmt.Println(ss)
 
 }
