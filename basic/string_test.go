@@ -11,3 +11,10 @@ func TestString(t *testing.T) {
 	fmt.Printf("%v ==> %v\n", ([]byte)(s), s)
 
 }
+
+func TestStringCompare(t *testing.T) {
+	a := "bb"
+	b := "bb"
+
+	fmt.Println(a == b)
+}
