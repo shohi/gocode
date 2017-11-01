@@ -13,3 +13,16 @@ func TestSlice(t *testing.T) {
 
 	fmt.Println(aa)
 }
+
+func TestSliceCapAndLen(t *testing.T) {
+	aa := make([]byte, 5)
+	fmt.Println(len(aa), cap(aa))
+
+	cc := make([]byte, 10, 20)
+	fmt.Println(len(cc), cap(cc))
+
+	var bb []byte
+	fmt.Println(len(bb), cap(bb), bb, bb == nil)
+	bb = append(bb, 0x10)
+	fmt.Println(len(bb), cap(bb), bb, bb == nil)
+}
