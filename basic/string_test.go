@@ -40,3 +40,15 @@ func TestStringsFold(t *testing.T) {
 		t.Errorf("strings.EqualFold(%q, %q) = %v, want %v", "Get", "GET", got, want)
 	}
 }
+
+func TestStringFromNIL(t *testing.T) {
+	var a []byte
+	a = nil
+	b := string(a)
+	fmt.Println(b == "")
+}
+
+func TestStringTrim(t *testing.T) {
+	str := "     hello   "
+	fmt.Println(strings.TrimSpace(str))
+}

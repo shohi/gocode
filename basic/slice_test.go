@@ -26,3 +26,9 @@ func TestSliceCapAndLen(t *testing.T) {
 	bb = append(bb, 0x10)
 	fmt.Println(len(bb), cap(bb), bb, bb == nil)
 }
+
+func TestSliceAppend(t *testing.T) {
+	var aa []int
+	aa = append(aa, 10, 20)
+	fmt.Println(aa)
+}
