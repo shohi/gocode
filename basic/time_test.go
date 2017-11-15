@@ -1,26 +1,26 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"strings"
 	"testing"
 	"time"
 )
 
-func printSleep() {
+func TestSleep(t *testing.T) {
 	aa := time.Now()
 	time.Sleep(1 * time.Second)
-	fmt.Println(aa)
+	log.Println(aa)
 	bb := time.Since(aa)
 	bb = bb - (bb % time.Second)
-	fmt.Println(bb)
+	log.Println(bb)
 }
 
-func printDuration() {
+func TestDuration(t *testing.T) {
 	d := 1000 * time.Second
-	fmt.Println(strings.ToUpper(d.String()))
+	log.Println(strings.ToUpper(d.String()))
 }
 
-func TestTime(t *testing.T) {
-	printDuration()
+func TestUnixTimestamp(t *testing.T) {
+	log.Println(time.Now().Unix())
 }

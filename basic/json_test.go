@@ -19,6 +19,17 @@ func TestMarshal(t *testing.T) {
 	log.Println(string(bs))
 }
 
+func TestUnmarshall(t *testing.T) {
+	bs, _ := json.Marshal(hello{10, "hello"})
+	var data hello
+	err := json.Unmarshal(bs, &data)
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println(data)
+	}
+}
+
 func TestRawMessag(t *testing.T) {
 	aa := json.RawMessage("hello")
 	log.Println(aa)
