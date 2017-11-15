@@ -1,28 +1,26 @@
 package basic
 
-import "fmt"
-import "encoding/json"
-import "testing"
+import (
+	"encoding/json"
+	"log"
+	"testing"
+)
 
 type hello struct {
 	A int    `json:"fieldA"`
 	B string `json:"fieldB"`
 }
 
-func marshal() {
+func TestMarshal(t *testing.T) {
 	bs, _ := json.Marshal(hello{10, "hello"})
-	// fmt.Println(string(bs))
+	// log.Println(string(bs))
 
 	bs, _ = json.MarshalIndent(hello{10, "hello"}, "", "  ")
-	fmt.Println(string(bs))
-}
-
-func rawmessage() {
-	aa := json.RawMessage("hello")
-	fmt.Println(aa)
-	fmt.Println(string(aa))
+	log.Println(string(bs))
 }
 
 func TestRawMessag(t *testing.T) {
-	rawmessage()
+	aa := json.RawMessage("hello")
+	log.Println(aa)
+	log.Println(string(aa))
 }
