@@ -1,7 +1,7 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"testing"
 )
 
@@ -11,24 +11,28 @@ func TestSlice(t *testing.T) {
 		aa = append(aa, 0)
 	}
 
-	fmt.Println(aa)
+	log.Println(aa)
 }
 
 func TestSliceCapAndLen(t *testing.T) {
 	aa := make([]byte, 5)
-	fmt.Println(len(aa), cap(aa))
+	log.Println(len(aa), cap(aa))
 
 	cc := make([]byte, 10, 20)
-	fmt.Println(len(cc), cap(cc))
+	log.Println(len(cc), cap(cc))
 
 	var bb []byte
-	fmt.Println(len(bb), cap(bb), bb, bb == nil)
+	log.Println(len(bb), cap(bb), bb, bb == nil)
 	bb = append(bb, 0x10)
-	fmt.Println(len(bb), cap(bb), bb, bb == nil)
+	log.Println(len(bb), cap(bb), bb, bb == nil)
 }
 
 func TestSliceAppend(t *testing.T) {
 	var aa []int
 	aa = append(aa, 10, 20)
-	fmt.Println(aa)
+	log.Println(aa)
+
+	aa = make([]int, 5)
+	aa = append(aa, 30, 40)
+	log.Println(aa)
 }
