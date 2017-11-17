@@ -1,8 +1,8 @@
 package basic
 
 import (
-	"fmt"
 	"log"
+	"strconv"
 	"testing"
 )
 
@@ -14,26 +14,43 @@ const (
 	closed
 )
 
-func map1() {
+func TestMap1(t *testing.T) {
 	m := make(map[string]bool)
 	m["hello"] = true
 	m["world"] = false
 
 	for v := range m {
-		fmt.Println(v)
+		log.Println(v)
 	}
 }
 
-func map2() {
+func TestMap2(t *testing.T) {
 	m := make(map[string]int, 2)
 	log.Println(len(m))
+
 	for v := range m {
-		fmt.Println(v)
+		log.Println(v)
+	}
+}
+
+func TestMapNoInitialize(t *testing.T) {
+	var m map[string]int
+
+	log.Println(m)
+
+	// map must be intialized before use
+	m = make(map[string]int)
+	for k := 0; k < 10; k++ {
+		m[strconv.Itoa(k)] = k
+	}
+
+	for k, v := range m {
+		log.Println(k, v)
 	}
 }
 
 func TestEnum(t *testing.T) {
-	fmt.Printf("%v, %T\n", open, open)
-	fmt.Printf("%v, %T\n", halfopen, halfopen)
-	fmt.Println(open == 0)
+	log.Printf("%v, %T\n", open, open)
+	log.Printf("%v, %T\n", halfopen, halfopen)
+	log.Println(open == 0)
 }

@@ -1,7 +1,8 @@
 package basic
 
 import (
-	"fmt"
+	"log"
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -9,7 +10,7 @@ import (
 func TestString(t *testing.T) {
 	s := "ABCDE"
 
-	fmt.Printf("%v ==> %v\n", ([]byte)(s), s)
+	log.Printf("%v ==> %v\n", ([]byte)(s), s)
 
 }
 
@@ -17,19 +18,19 @@ func TestStringCompare(t *testing.T) {
 	a := "bb"
 	b := "bb"
 
-	fmt.Println(a == b)
+	log.Println(a == b)
 }
 
 func TestStringAndBytes(t *testing.T) {
 	str := "12"
 	b := []byte(str)
 
-	fmt.Println(str, b)
+	log.Println(str, b)
 
 	b = []byte{0x01, 0x02}
 	str = string(b)
 
-	fmt.Println(str, b)
+	log.Println(str, b)
 }
 
 func TestStringsFold(t *testing.T) {
@@ -45,10 +46,15 @@ func TestStringFromNIL(t *testing.T) {
 	var a []byte
 	a = nil
 	b := string(a)
-	fmt.Println(b == "")
+	log.Println(b == "")
 }
 
 func TestStringTrim(t *testing.T) {
 	str := "     hello   "
-	fmt.Println(strings.TrimSpace(str))
+	log.Println(strings.TrimSpace(str))
+}
+
+func TestStringConvert(t *testing.T) {
+	aa := 10
+	log.Println(strconv.Itoa(aa))
 }
