@@ -1,24 +1,27 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"testing"
 )
 
-func hostname() {
-	fmt.Println(os.Hostname())
+func TestHostname(t *testing.T) {
+	log.Println(os.Hostname())
 }
 
-func exit() {
-	fmt.Println("going to exit")
+func TestExit(t *testing.T) {
+	log.Println("going to exit")
 	os.Exit(-21)
 }
 
 func TestDefer(t *testing.T) {
 	defer func() {
-		fmt.Println("exit")
+		log.Println("exit")
 	}()
-	exit()
-	//
+	os.Exit(-1)
+}
+
+func TestGetenv(t *testing.T) {
+	log.Println(os.Getenv("GOPATH"))
 }
