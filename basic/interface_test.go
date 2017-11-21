@@ -1,20 +1,16 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"testing"
 	"unsafe"
 )
 
-func compare() {
-	var s struct{}
-	fmt.Println(unsafe.Sizeof(s))
-	var i interface{}
-	fmt.Println(unsafe.Sizeof(i))
-	var b bool
-	fmt.Println(unsafe.Sizeof(b))
-}
-
 func TestCompare(t *testing.T) {
-	compare()
+	var s struct{}
+	log.Println(unsafe.Sizeof(s))
+	var i interface{}
+	log.Println(unsafe.Sizeof(i))
+	var b bool
+	log.Println(unsafe.Sizeof(b))
 }

@@ -13,13 +13,13 @@ type hello struct {
 
 func TestMarshal(t *testing.T) {
 	bs, _ := json.Marshal(hello{10, "hello"})
-	// log.Println(string(bs))
+	log.Println(string(bs))
 
 	bs, _ = json.MarshalIndent(hello{10, "hello"}, "", "  ")
 	log.Println(string(bs))
 }
 
-func TestUnmarshall(t *testing.T) {
+func TestUnmarshal(t *testing.T) {
 	bs, _ := json.Marshal(hello{10, "hello"})
 	var data hello
 	err := json.Unmarshal(bs, &data)
@@ -28,10 +28,77 @@ func TestUnmarshall(t *testing.T) {
 	} else {
 		log.Println(data)
 	}
+
+	// use raw message
+	// Unmarshall will
+	var dd hello
+	info := json.RawMessage(`{"fieldA":100}`)
+	json.Unmarshal(info, &dd)
+
+	log.Println(dd.B == "")
 }
 
 func TestRawMessag(t *testing.T) {
 	aa := json.RawMessage("hello")
 	log.Println(aa)
 	log.Println(string(aa))
+}
+
+func TestNestedMarshal(t *testing.T) {
+
+	type Inner struct {
+		Name  string `json:"name"`
+		Value int    `json:"value"`
+	}
+
+	type Outer struct {
+		Inner
+		Type string `json:"type"`
+	}
+
+	var data = Outer{
+		Inner: Inner{
+			Name:  "apple",
+			Value: 100,
+		},
+		Type: "Fruit",
+	}
+
+	bs, _ := json.MarshalIndent(data, "", "  ")
+
+	log.Println(string(bs))
+
+	var data2 Outer
+
+	json.Unmarshal(bs, &data2)
+
+	log.Println(data2)
+	log.Println(data2.Name)
+
+}
+
+func TestJsonArray(t *testing.T) {
+
+	type Data struct {
+		Value int `json:"value"`
+	}
+
+	type DataArray struct {
+		DataList []Data `json:"dataList"`
+	}
+
+	data := Data{10}
+	dataList := DataArray{
+		DataList: []Data{data},
+	}
+
+	bs, _ := json.MarshalIndent(dataList, "", "  ")
+	// log.Println(string(bs))
+
+	var dataList2 DataArray
+
+	json.Unmarshal(bs, &dataList2)
+
+	log.Println(dataList2.DataList)
+
 }

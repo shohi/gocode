@@ -1,7 +1,7 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"testing"
 )
 
@@ -9,7 +9,7 @@ func TestBetweenOperator(t *testing.T) {
 	a := 10
 
 	if 1 < a && a < 20 {
-		fmt.Println(a)
+		log.Println(a)
 	}
 
 }
@@ -17,5 +17,5 @@ func TestBetweenOperator(t *testing.T) {
 func TestParallelAssign(t *testing.T) {
 	a, b := 10, 20
 
-	fmt.Println(a, b)
+	log.Println(a, b)
 }
