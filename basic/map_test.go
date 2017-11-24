@@ -54,3 +54,9 @@ func TestEnum(t *testing.T) {
 	log.Printf("%v, %T\n", halfopen, halfopen)
 	log.Println(open == 0)
 }
+
+func TestMapForNonexistKey(t *testing.T) {
+	m := make(map[string][]byte)
+
+	log.Println(m["hello"] == nil)
+}

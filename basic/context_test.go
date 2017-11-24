@@ -1,7 +1,10 @@
 package basic
 
 import (
-	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"net/http"
 	"testing"
 	"time"
 
@@ -20,5 +23,43 @@ func TestContext(t *testing.T) {
 	ctx, doCancelFunc := context.WithCancel(dlCtx)
 	defer doCancelFunc()
 
-	fmt.Println(ctx)
+	log.Println(ctx)
+}
+
+func TestContextParallel(t *testing.T) {
+	ctx, doCancelFunc := context.WithCancel(context.Background())
+	defer doCancelFunc()
+
+	testFileURL := "https://speed.hetzner.de/1GB.bin"
+	client := &http.Client{}
+
+	go func(c context.Context) {
+
+		select {
+		case <-c.Done():
+			log.Println("exit by context Done")
+		default:
+			log.Println(testFileURL)
+			log.Println(client)
+
+			resp, err := client.Get(testFileURL)
+			if err != nil {
+				return
+			}
+			if resp != nil {
+				defer resp.Body.Close()
+				io.Copy(ioutil.Discard, resp.Body)
+			}
+		}
+	}(ctx)
+
+	time.Sleep(10 * time.Second)
+}
+
+func TestDoCancelMultiTimes(t *testing.T) {
+	_, doCancelFunc := context.WithCancel(context.Background())
+
+	// cancel function can be called multiple times
+	doCancelFunc()
+	doCancelFunc()
 }
