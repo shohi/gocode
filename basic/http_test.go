@@ -27,3 +27,11 @@ func TestHTTPGet(t *testing.T) {
 
 	log.Println(resp == nil)
 }
+
+func TestCreateHTTPRequest(t *testing.T) {
+	req, err := http.NewRequest("PUT", "localhost:8080", nil)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(req.Body == nil)
+}

@@ -36,3 +36,10 @@ func TestSliceAppend(t *testing.T) {
 	aa = append(aa, 30, 40)
 	log.Println(aa)
 }
+
+func TestSliceInitialization(t *testing.T) {
+	// initialize slice without length parameter will cause error
+	// aa := make([]int)
+	aa := make([]int, 10)
+	log.Println(aa)
+}

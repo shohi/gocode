@@ -2,6 +2,7 @@ package basic
 
 import (
 	"fmt"
+	"log"
 	"testing"
 )
 
@@ -15,4 +16,22 @@ func TestDeferInLoop(t *testing.T) {
 			break
 		}
 	}
+}
+
+func TestDeferWithMultipleAssignment(t *testing.T) {
+	aa := 10
+	defer func() {
+		log.Println("aa ==> ", aa)
+	}()
+
+	aa = 12
+}
+
+func TestDeferWithArgument(t *testing.T) {
+	aa := 10
+	defer func(k int) {
+		log.Println("argument ==> ", k)
+	}(aa)
+
+	aa = 12
 }

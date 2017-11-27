@@ -58,3 +58,28 @@ func TestStringConvert(t *testing.T) {
 	aa := 10
 	log.Println(strconv.Itoa(aa))
 }
+
+func TestStringTrimSuffix(t *testing.T) {
+	aa := "aaa/bbb"
+	bb := strings.TrimPrefix(aa, "aaa/")
+
+	log.Println(aa, bb)
+}
+
+func TestStringAffix(t *testing.T) {
+	log.Println(strings.HasPrefix("/aaa", "/"))
+	log.Println(strings.HasSuffix("bbbb/", "/"))
+}
+
+func TestStringPointerConvert(t *testing.T) {
+	var strptr *string
+	var str string
+	str = "hello world"
+
+	// Must be initialized before using
+	strptr = &str
+	*strptr = "world"
+
+	log.Println(*strptr)
+	log.Println(str)
+}
