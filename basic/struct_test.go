@@ -2,6 +2,7 @@ package basic
 
 import (
 	"fmt"
+	"log"
 	"testing"
 )
 
@@ -37,4 +38,26 @@ func TestEmptyStruct(t *testing.T) {
 	ss := EmptyStruct{}
 	fmt.Println(ss)
 
+}
+
+//
+type BaseStruct struct {
+}
+
+func (s *BaseStruct) SayHello() {
+	panic("Hello BaseStruct")
+}
+
+type DeriveStruct struct {
+	BaseStruct
+}
+
+func (s *DeriveStruct) SayHello() {
+	log.Println("Hello DeriveStruct")
+}
+func TestEmbeddedStruct(t *testing.T) {
+	base := BaseStruct{}
+	derive := DeriveStruct{BaseStruct: base}
+
+	derive.SayHello()
 }

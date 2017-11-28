@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -47,4 +49,20 @@ func TestResponseRecorder(t *testing.T) {
 	// 200
 	// text/html; charset=utf-8
 	// <html><body>Hello World!</body></html>
+}
+
+func TestReadDir(t *testing.T) {
+	dirpath := "../.."
+	fileList, _ := ioutil.ReadDir(dirpath)
+	abspath, _ := filepath.Abs(dirpath)
+	log.Println(abspath)
+	for _, f := range fileList {
+		log.Println(filepath.Join(dirpath, f.Name()))
+	}
+}
+
+func TestRemoveDir(t *testing.T) {
+	dirpath := "non-exist/non-exist"
+	err := os.RemoveAll(dirpath)
+	log.Println(err)
 }

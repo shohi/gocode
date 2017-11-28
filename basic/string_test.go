@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 	"strings"
@@ -11,7 +12,6 @@ func TestString(t *testing.T) {
 	s := "ABCDE"
 
 	log.Printf("%v ==> %v\n", ([]byte)(s), s)
-
 }
 
 func TestStringCompare(t *testing.T) {
@@ -82,4 +82,13 @@ func TestStringPointerConvert(t *testing.T) {
 
 	log.Println(*strptr)
 	log.Println(str)
+}
+
+func TestStringType(t *testing.T) {
+	c := '/'
+	s := "/"
+	log.Println(fmt.Sprintf("%T", c))
+	log.Println(fmt.Sprintf("%T", s))
+
+	log.Println(string(c))
 }
