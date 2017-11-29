@@ -13,6 +13,11 @@ func TestUrlPathEscape(t *testing.T) {
 func TestUrlParse(t *testing.T) {
 	urlStr := "http://localhost:9090/hello/newyorker?season=summer"
 	log.Println(url.Parse(urlStr))
+
+	urlStr = "http://ip/?action=save"
+
+	myURL, _ := url.Parse(urlStr)
+	log.Println(url.ParseQuery(myURL.RawQuery))
 }
 
 func TestUrlResolveReference(t *testing.T) {
@@ -36,4 +41,13 @@ func TestURLQuery(t *testing.T) {
 		log.Printf("key ==> %s, value ==> %v", key, value)
 	}
 	log.Println(base.Query())
+
+	log.Println(base.RawQuery)
+}
+
+func TestURLPathPrefix(t *testing.T) {
+	urlStr := "http://ip/stream1/segment1"
+	base, _ := url.Parse(urlStr)
+
+	log.Println(base.Path)
 }
