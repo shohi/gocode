@@ -45,7 +45,12 @@ type BaseStruct struct {
 }
 
 func (s *BaseStruct) SayHello() {
-	panic("Hello BaseStruct")
+	log.Println("Hello BaseStruct")
+}
+
+func (s *BaseStruct) Greet() {
+	s.SayHello()
+	log.Println("How are you?")
 }
 
 type DeriveStruct struct {
@@ -59,5 +64,8 @@ func TestEmbeddedStruct(t *testing.T) {
 	base := BaseStruct{}
 	derive := DeriveStruct{BaseStruct: base}
 
-	derive.SayHello()
+	// Note: embed struct will call embeded struct's method
+	// this is just syntax sugar, not a inheritance
+	// derive.SayHello()
+	derive.Greet() // ==> will print "Hello BaseStruct"
 }
