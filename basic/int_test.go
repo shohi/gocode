@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"encoding/binary"
 	"log"
 	"math"
 	"testing"
@@ -19,4 +20,10 @@ func TestUint32(t *testing.T) {
 
 	log.Println(a, b+uint32(8))
 	log.Println(a > (b + uint32(8)))
+}
+
+func TestUint64ToByteArray(t *testing.T) {
+	var a = uint64(10)
+	b := make([]byte, 8)
+	binary.LittleEndian.PutUint64(b, a)
 }

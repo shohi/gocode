@@ -43,3 +43,11 @@ func TestSliceInitialization(t *testing.T) {
 	aa := make([]int, 10)
 	log.Println(aa)
 }
+
+func TestNilSliceTraverse(t *testing.T) {
+	var a []*int
+
+	for k, v := range a {
+		log.Println(k, v)
+	}
+}

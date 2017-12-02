@@ -60,3 +60,20 @@ func TestMapForNonexistKey(t *testing.T) {
 
 	log.Println(m["hello"] == nil)
 }
+
+func TestMapIteration(t *testing.T) {
+	m := map[string]int{
+		"hello": 0,
+		"world": 1,
+	}
+
+	// 1. iterate over key
+	for k := range m {
+		log.Println(k)
+	}
+
+	// 2. iterate over entry(key/value pair)
+	for k, v := range m {
+		log.Println(k, v)
+	}
+}
