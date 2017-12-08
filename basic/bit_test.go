@@ -2,6 +2,7 @@ package basic
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 )
 
@@ -21,6 +22,17 @@ func TestBitShiftLeft(t *testing.T) {
 
 	fmt.Println(b)
 	fmt.Println(b << 1)
+	fmt.Println(b << 1)
+}
+
+func TestBitClear(t *testing.T) {
+	n := 127
+	fmt.Println("b", strconv.FormatInt(int64(n), 2))
+	pos := uint(2)
+	mask := ^(1 << pos)
+	n &= mask
+
+	fmt.Println("a", strconv.FormatInt(int64(n), 2))
 }
 
 func TestBitOperation(t *testing.T) {

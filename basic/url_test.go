@@ -34,7 +34,7 @@ func TestUrlResolveReference(t *testing.T) {
 }
 
 func TestURLQuery(t *testing.T) {
-	urlStr := "http://localhost:9090/hello/newyorker?season=summer&season=spring&show=tony"
+	urlStr := "http://localhost:9090/hello/newyorker?season=summer&season=spring&show=tony&nokey"
 	base, _ := url.Parse(urlStr)
 
 	for key, value := range base.Query() {
@@ -43,6 +43,7 @@ func TestURLQuery(t *testing.T) {
 	log.Println(base.Query())
 
 	log.Println(base.RawQuery)
+	log.Println(base.Path)
 }
 
 func TestURLPathPrefix(t *testing.T) {

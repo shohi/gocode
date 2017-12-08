@@ -92,3 +92,9 @@ func TestStringType(t *testing.T) {
 
 	log.Println(string(c))
 }
+
+func TestStringSplit(t *testing.T) {
+	str := ""
+	strSlice := strings.Split(str, ",")
+	log.Println(strSlice)
+}
