@@ -98,3 +98,16 @@ func TestStringSplit(t *testing.T) {
 	strSlice := strings.Split(str, ",")
 	log.Println(strSlice)
 }
+
+func TestStringRepeat(t *testing.T) {
+	str := "na"
+	log.Println("ba" + strings.Repeat(str, 2))
+}
+
+func TestStringFromInt(t *testing.T) {
+	// not work
+	log.Println(string(10))
+
+	//
+	log.Println(strconv.Itoa(10))
+}

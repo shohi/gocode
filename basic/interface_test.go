@@ -3,14 +3,37 @@ package basic
 import (
 	"log"
 	"testing"
-	"unsafe"
 )
 
-func TestCompare(t *testing.T) {
-	var s struct{}
-	log.Println(unsafe.Sizeof(s))
-	var i interface{}
-	log.Println(unsafe.Sizeof(i))
-	var b bool
-	log.Println(unsafe.Sizeof(b))
+func TestInterfaceForNil(t *testing.T) {
+
+	tFunc := func(val interface{}) {
+		log.Println(val == nil)
+		log.Println(val)
+	}
+
+	tFunc(nil)
+	tFunc("hello")
+	tFunc(12)
+	tFunc(false)
+}
+
+func TestInterfaceSwitchWithBreakReturn(t *testing.T) {
+	tFunc := func(val interface{}) {
+		switch t := val.(type) {
+		case int:
+			log.Println("int ==> ", t)
+			return
+		case string:
+			log.Println("string ==> ", t)
+			return
+		case int32:
+			log.Println("int32 ==> ", t)
+			break
+		}
+
+		log.Println("tFunc end")
+	}
+
+	tFunc(32)
 }

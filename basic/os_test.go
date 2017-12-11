@@ -4,10 +4,30 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 )
+
+var osClear map[string]func() //create a map for storing clear funcs
+
+func init() {
+	osClear = make(map[string]func()) //Initialize it
+	osClear["linux"] = func() {
+		cmd := exec.Command("clear") //Linux example, its tested
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+	osClear["windows"] = func() {
+		cmd := exec.Command("cmd", "/c", "cls") // Windows example it is untested, but I think its working
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+
+	osClear["darwin"] = osClear["linux"]
+}
 
 func TestHostname(t *testing.T) {
 	log.Println(os.Hostname())
@@ -43,4 +63,20 @@ func TestOSRemove(t *testing.T) {
 		log.Println(err)
 	}
 
+}
+
+// ref https://stackoverflow.com/questions/22891644/how-can-i-clear-the-terminal-screen-in-go
+// not work in test environment
+func clearTerminalScreen() {
+	value, ok := osClear[runtime.GOOS] //runtime.GOOS -> linux, windows, darwin etc.
+	if ok {                            //if we defined a clear func for that platform:
+		value() //we execute it
+	} else { //unsupported platform
+		panic("Your platform is unsupported! I can't clear terminal screen :(")
+	}
+}
+
+func TestOSInGolang(t *testing.T) {
+	log.Println(runtime.GOOS)
+	log.Println(runtime.GOARCH)
 }

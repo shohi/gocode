@@ -27,3 +27,10 @@ func TestUint64ToByteArray(t *testing.T) {
 	b := make([]byte, 8)
 	binary.LittleEndian.PutUint64(b, a)
 }
+
+func TestUint32Modulo(t *testing.T) {
+	aa := uint32(12)
+	bb := uint32(10)
+	log.Println(aa / bb)
+	log.Println(aa % bb)
+}
