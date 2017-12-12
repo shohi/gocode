@@ -1,10 +1,24 @@
 package basic
 
 import (
+	"bytes"
+	"encoding/gob"
 	"log"
 	"strconv"
 	"testing"
 )
+
+// GetBytes - convert arbitrary interface to byte array
+// ref, https://stackoverflow.com/questions/23003793/convert-arbitrary-golang-interface-to-byte-array
+func getBytes(val interface{}) ([]byte, error) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+	err := enc.Encode(val)
+	if err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
+}
 
 //
 func TestByteBinaryPrint(t *testing.T) {
