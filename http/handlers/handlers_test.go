@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -34,4 +35,17 @@ func TestHealthCheckHandler(t *testing.T) {
 		t.Errorf("handler returned unexpected body: got %v want %v",
 			rr.Body.String(), expected)
 	}
+}
+
+func TestStatusCode(t *testing.T) {
+	req, err := http.NewRequest("GET", "/status", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	w := httptest.NewRecorder()
+	statusCodeHandler(w, req)
+
+	log.Println(w.Code)
+
 }
