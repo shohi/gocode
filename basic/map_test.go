@@ -14,7 +14,7 @@ const (
 	closed
 )
 
-func TestMap1(t *testing.T) {
+func TestMapTraverse(t *testing.T) {
 	m := make(map[string]bool)
 	m["hello"] = true
 	m["world"] = false
@@ -24,7 +24,7 @@ func TestMap1(t *testing.T) {
 	}
 }
 
-func TestMap2(t *testing.T) {
+func TestMapForCapacity(t *testing.T) {
 	m := make(map[string]int, 2)
 	log.Println(len(m))
 
@@ -76,4 +76,15 @@ func TestMapIteration(t *testing.T) {
 	for k, v := range m {
 		log.Println(k, v)
 	}
+}
+
+func TestMapForMutable(t *testing.T) {
+	initSlice := make([]string, 0, 8)
+	initSlice = append(initSlice, "world")
+	m := make(map[string][]string)
+	m["hello"] = initSlice
+	strSlice := m["hello"]
+	strSlice = append(strSlice, "new world")
+
+	log.Println(m["hello"])
 }
