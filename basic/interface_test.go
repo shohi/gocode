@@ -37,3 +37,47 @@ func TestInterfaceSwitchWithBreakReturn(t *testing.T) {
 
 	tFunc(32)
 }
+
+type AA interface {
+	Hello()
+}
+
+type BB interface {
+	Hello()
+}
+
+type CC interface {
+	World()
+}
+
+type CCImp struct{}
+
+func (c CCImp) World() {
+	log.Println("CC Imp")
+}
+
+type AAImp struct{}
+
+func (a AAImp) Hello() {
+	log.Println("AA Imp")
+}
+
+type BBImp struct{}
+
+func (b BBImp) Hello() {
+	log.Println("BB Imp")
+}
+
+func TestInterfaceCompatibility(t *testing.T) {
+	var aa AA = AAImp{}
+	var bb BB = BBImp{}
+	var cc CC = CCImp{}
+	aa = bb
+	aa.Hello()
+	bb.Hello()
+
+	// following assigment will cause syntax error
+	// Error: CC does not implement AA
+	// aa = cc
+	cc.World()
+}
