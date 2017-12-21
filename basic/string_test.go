@@ -52,6 +52,10 @@ func TestStringFromNIL(t *testing.T) {
 func TestStringTrim(t *testing.T) {
 	str := "     hello   "
 	log.Println(strings.TrimSpace(str))
+
+	str = "a/b/c/d/e///"
+	log.Println(strings.TrimRight(str, "/"))
+	log.Println(strings.TrimRight("/a/b/c/d/", "//")) // ==> /a/b/c/d
 }
 
 func TestStringConvert(t *testing.T) {

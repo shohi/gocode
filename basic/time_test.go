@@ -23,6 +23,7 @@ func TestDuration(t *testing.T) {
 
 func TestUnixTimestamp(t *testing.T) {
 	log.Println(time.Now().Unix())
+	log.Println(time.Unix(0, 0))
 }
 
 func TestTimeString(t *testing.T) {

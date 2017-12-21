@@ -1,14 +1,16 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"path/filepath"
 	"testing"
 )
 
 func TestPathJoin(t *testing.T) {
-	fmt.Println(filepath.Join("", "a"))
-	fmt.Println(filepath.Join("", "a", ".dat"))
+	log.Println(filepath.Join("", "a"))
+	log.Println(filepath.Join("", "a", ".dat"))
 
-	fmt.Println(filepath.Join("/a/b/c", "/b/c"))
+	log.Println(filepath.Join("/a/b/c", "/b/c"))
+
+	log.Println(filepath.Join("http://a.b.c.d/", "/a/b/c/"))
 }

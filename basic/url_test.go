@@ -8,6 +8,7 @@ import (
 
 func TestUrlPathEscape(t *testing.T) {
 	log.Println(url.PathEscape("lang:>50"))
+	log.Println(url.PathEscape("https://www.amazon.com"))
 }
 
 func TestUrlParse(t *testing.T) {

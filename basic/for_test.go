@@ -38,3 +38,18 @@ func TestForContinue(t *testing.T) {
 		}
 	}
 }
+
+func TestForAssignment(t *testing.T) {
+	var fnList []func()
+	for k := 0; k < 10; k++ {
+		tmp := k
+		fn := func() {
+			log.Println(tmp)
+		}
+		fnList = append(fnList, fn)
+	}
+
+	for _, f := range fnList {
+		f()
+	}
+}

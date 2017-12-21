@@ -19,7 +19,7 @@ func handleRedirect(w http.ResponseWriter, r *http.Request) {
 
 func handleGet(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("aws", "aws-authenticatioin")
-	w.Header().Set("Location", "http://"+r.Host+"/redirect")
+	w.Header().Set("Location", "https://www.baidu.com")
 	w.WriteHeader(http.StatusFound)
 }
 
