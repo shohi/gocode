@@ -25,7 +25,11 @@ func TestByteBinaryPrint(t *testing.T) {
 	var b = byte(0x01)
 	log.Println(b)
 	log.Printf("%b", b)
+	log.Printf("%v", b)
 	log.Println(strconv.FormatInt(int64(b), 2))
+
+	var bb = []byte{0x01, 0x02}
+	log.Printf("%v", bb)
 }
 
 func TestByteLiteral(t *testing.T) {
