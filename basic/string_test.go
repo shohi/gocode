@@ -115,3 +115,14 @@ func TestStringFromInt(t *testing.T) {
 	//
 	log.Println(strconv.Itoa(10))
 }
+
+func TestStringJoin(t *testing.T) {
+	strs := []string{"Hello", "World"}
+
+	joinedStr := strings.Join(strs, "|")
+
+	log.Println(joinedStr)
+
+	log.Println(strings.Split(joinedStr, "|"))
+
+}
