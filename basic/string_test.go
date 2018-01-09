@@ -122,7 +122,12 @@ func TestStringJoin(t *testing.T) {
 	joinedStr := strings.Join(strs, "|")
 
 	log.Println(joinedStr)
-
 	log.Println(strings.Split(joinedStr, "|"))
+}
 
+func TestStringContains(t *testing.T) {
+	str := "【求】"
+	substr := "求"
+
+	log.Println(strings.Contains(str, substr))
 }

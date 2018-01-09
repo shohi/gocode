@@ -1,5 +1,0 @@
-package xml
-
-func parseXML() {
-
-}
