@@ -19,3 +19,6 @@
 
 # remove personal setting directory
 setting/
+
+# remove ssh keys
+keys.toml

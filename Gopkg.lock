@@ -2,6 +2,24 @@
 
 
 [[projects]]
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
+
+[[projects]]
+  name = "github.com/atrox/homedir"
+  packages = ["."]
+  revision = "06c445c1ff71259ff8653dd17941b062b4c7f457"
+  version = "v1.0.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/bramvdbogaerde/go-scp"
+  packages = [".","auth"]
+  revision = "e1fc87afa32536b6f2a58fc9cf937432aeff91e7"
+
+[[projects]]
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
   revision = "629574ca2a5df945712d3079857300b5e4da0236"
@@ -63,6 +81,12 @@
 
 [[projects]]
   branch = "master"
+  name = "golang.org/x/crypto"
+  packages = ["curve25519","ed25519","ed25519/internal/edwards25519","internal/chacha20","poly1305","ssh"]
+  revision = "a6600008915114d9c087fad9f03d75087b1a74df"
+
+[[projects]]
+  branch = "master"
   name = "golang.org/x/net"
   packages = ["context"]
   revision = "c73622c77280266305273cb545f54516ced95b93"
@@ -100,6 +124,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bb5aacba39cfad96db99b53f0e49c707f8d6f2b3b6047b16eab75d4e7e3ae44b"
+  inputs-digest = "b92474428d6e3bcb2c331e9a8330068a295f36bed0e7bb33165712f2c90233d2"
   solver-name = "gps-cdcl"
   solver-version = 1
