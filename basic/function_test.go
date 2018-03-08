@@ -8,7 +8,7 @@ import (
 func TestFunctionWithNil(t *testing.T) {
 	var test func(func())
 	test = func(f func()) {
-		log.Println(f)
+		log.Printf("%T", f)
 		log.Println(f == nil)
 	}
 
