@@ -37,6 +37,14 @@ func TestSliceAppend(t *testing.T) {
 	log.Println(aa)
 }
 
+func TestSliceInit(t *testing.T) {
+	var aa []int
+	log.Printf("default value for slice: %v", aa)
+
+	var bb []int = nil
+	log.Printf("value for nil-initialized slice: %v", bb)
+}
+
 func TestSliceInitialization(t *testing.T) {
 	// initialize slice without length parameter will cause error
 	// aa := make([]int)
