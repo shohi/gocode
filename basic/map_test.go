@@ -88,3 +88,12 @@ func TestMapForMutable(t *testing.T) {
 
 	log.Println(m["hello"])
 }
+
+func TestMapWithIntKey(t *testing.T) {
+	m := make(map[int]string)
+	m[1] = "hello"
+
+	for k, v := range m {
+		log.Printf("key: %d, value: %s", k, v)
+	}
+}
