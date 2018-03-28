@@ -2,6 +2,7 @@ package basic
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"testing"
 )
@@ -78,11 +79,9 @@ func TestNestedMarshal(t *testing.T) {
 }
 
 func TestJsonArray(t *testing.T) {
-
 	type Data struct {
 		Value int `json:"value"`
 	}
-
 	type DataArray struct {
 		DataList []Data `json:"dataList"`
 	}
@@ -96,9 +95,32 @@ func TestJsonArray(t *testing.T) {
 	// log.Println(string(bs))
 
 	var dataList2 DataArray
-
 	json.Unmarshal(bs, &dataList2)
-
 	log.Println(dataList2.DataList)
+}
 
+func TestJsonList(t *testing.T) {
+	type Data struct {
+		Index int `json:"index"`
+		Value int `json:"value"`
+	}
+
+	ds := []*Data{
+		&Data{Index: 1, Value: 1},
+		&Data{Index: 2, Value: 2},
+	}
+
+	fn := func(d *Data) string {
+		return fmt.Sprintf("index: %d, value: %d", d.Index, d.Value)
+	}
+
+	bs, _ := json.MarshalIndent(ds, "", "  ")
+	log.Printf("json: %s\n", string(bs))
+
+	var dds []*Data
+	json.Unmarshal(bs, &dds)
+
+	for _, v := range dds {
+		fmt.Println(fn(v))
+	}
 }

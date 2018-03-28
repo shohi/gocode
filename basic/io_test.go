@@ -61,6 +61,14 @@ func TestReadDir(t *testing.T) {
 	}
 }
 
+func TestReadFileInDir(t *testing.T) {
+	dirpath := "."
+	fileList, _ := ioutil.ReadDir(dirpath)
+	for _, f := range fileList {
+		log.Println(filepath.Join(dirpath, f.Name()))
+	}
+}
+
 func TestRemoveDir(t *testing.T) {
 	dirpath := "non-exist/non-exist"
 	err := os.RemoveAll(dirpath)

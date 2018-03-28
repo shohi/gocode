@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"fmt"
 	"log"
 	"testing"
 )
@@ -67,4 +68,15 @@ func TestNilSliceTraverse(t *testing.T) {
 	for k, v := range bb {
 		log.Println("key: ", k, ", value: ", v)
 	}
+}
+
+func TestSlicePrint(t *testing.T) {
+	fn := func(strs ...string) {
+		fmt.Printf("slice: %v", strs)
+	}
+	var aa []string
+	fn(aa...)
+
+	aa = append(aa, []string{"a", "b", "c"}...)
+	fn(aa...)
 }
