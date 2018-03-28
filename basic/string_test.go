@@ -131,3 +131,15 @@ func TestStringContains(t *testing.T) {
 
 	log.Println(strings.Contains(str, substr))
 }
+
+func TestStringSlice(t *testing.T) {
+	ids := []string{"hello", "world"}
+	for _, id := range ids {
+		// use new variable to avoid same address issue
+		dd := id
+		log.Printf("id ==> content - [%v], address - [%v]", dd, &dd)
+
+		ddd := &id
+		log.Printf("id ==> content - [%v], address - [%v]", *ddd, ddd)
+	}
+}
