@@ -80,3 +80,8 @@ func TestSlicePrint(t *testing.T) {
 	aa = append(aa, []string{"a", "b", "c"}...)
 	fn(aa...)
 }
+
+func TestSliceSub(t *testing.T) {
+	c := "hello world"
+	log.Printf("string ==> %s", c[:0])
+}

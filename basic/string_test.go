@@ -3,6 +3,7 @@ package basic
 import (
 	"fmt"
 	"log"
+	"regexp"
 	"strconv"
 	"strings"
 	"testing"
@@ -141,5 +142,15 @@ func TestStringSlice(t *testing.T) {
 
 		ddd := &id
 		log.Printf("id ==> content - [%v], address - [%v]", *ddd, ddd)
+	}
+}
+
+func TestStringSplitWithRegularExpression(t *testing.T) {
+	// ptn := "[,，\\s+]"
+	ptn := "\\s+|[,，]"
+	strSlice := regexp.MustCompile(ptn).Split("a   b   c d  e   f,g,h，HHH", -1)
+
+	for k, v := range strSlice {
+		log.Printf("%d. %s\n", k, v)
 	}
 }
