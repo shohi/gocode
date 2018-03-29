@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"fmt"
 	"log"
 	"strings"
 	"testing"
@@ -37,4 +38,17 @@ func TestParseDuration(t *testing.T) {
 
 	durationStr = "10"
 	log.Println(time.ParseDuration(durationStr))
+}
+
+type logWriter struct{}
+
+func (writer logWriter) Write(bytes []byte) (int, error) {
+	// loc, _ := time.LoadLocation("America/Denver")
+	loc, _ := time.LoadLocation("Asia/Shanghai")
+	return fmt.Print(time.Now().In(loc).Format("2006-01-02T15:04:05.999Z0700") + " [DEBUG] " + string(bytes))
+}
+func TestTimeZoneTransform(t *testing.T) {
+	log.SetFlags(0)
+	log.SetOutput(new(logWriter))
+	log.Printf("hello new time format")
 }
