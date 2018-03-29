@@ -38,3 +38,6 @@
 [[constraint]]
   name = "github.com/atrox/homedir"
 
+[[constraint]]
+  name = "github.com/otiai10/gosseract"
+

@@ -44,6 +44,12 @@
   revision = "06020f85339e21b2478f756a78e295255ffa4d6a"
 
 [[projects]]
+  name = "github.com/otiai10/gosseract"
+  packages = ["."]
+  revision = "1cbb6d4346fe60110fbf2f34b3fd64348a3cefb1"
+  version = "v2.1.0"
+
+[[projects]]
   name = "github.com/pelletier/go-toml"
   packages = ["."]
   revision = "16398bac157da96aa88f98a2df640c7f32af1da2"
@@ -124,6 +130,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "b92474428d6e3bcb2c331e9a8330068a295f36bed0e7bb33165712f2c90233d2"
+  inputs-digest = "cb361b25c68ef111e36e40447173c7ad81445649d900011110bf2e6dd5ae716b"
   solver-name = "gps-cdcl"
   solver-version = 1
