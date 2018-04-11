@@ -5,7 +5,9 @@ import (
 	"testing"
 )
 
-func rotate(m [][]int, n int) {
+type Matrix [][]int
+
+func rotate(m Matrix, n int) {
 	for k := 0; k < n/2; k++ {
 		for j := k; j < n-1-k; j++ {
 			tmp := m[k][j]
@@ -47,7 +49,7 @@ func _initMatrix() {
 }
 
 func TestRotate(t *testing.T) {
-	m := [][]int{
+	m := Matrix{
 		{1, 2, 3},
 		{4, 5, 6},
 		{7, 8, 9},
