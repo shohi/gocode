@@ -154,3 +154,9 @@ func TestStringSplitWithRegularExpression(t *testing.T) {
 		log.Printf("%d. %s\n", k, v)
 	}
 }
+
+func TestStringOutput(t *testing.T) {
+	str := `"hello world"`
+
+	log.Printf("%s\n", str)
+}
