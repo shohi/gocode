@@ -35,3 +35,14 @@ func TestDeferWithArgument(t *testing.T) {
 
 	aa = 12
 }
+
+func TestDeferWithChain(t *testing.T) {
+	aa := func() func() {
+		log.Println("func start...")
+		return func() {
+			log.Println("func end...")
+		}
+	}
+	defer aa()()
+	log.Println("working...")
+}
