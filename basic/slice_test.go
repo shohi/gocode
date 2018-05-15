@@ -85,3 +85,16 @@ func TestSliceSub(t *testing.T) {
 	c := "hello world"
 	log.Printf("string ==> %s", c[:0])
 }
+
+func TestEmptyAndNilSlice(t *testing.T) {
+	// only way to declare `nil` slice
+	var s []int
+	log.Printf("s is nil ==> %v", s == nil)
+	log.Printf("string ==> %v", s)
+
+	s = []int{}
+	log.Printf("s is nil ==> %v, %v", s == nil, len(s))
+
+	s = make([]int, 0)
+	log.Printf("s is nil ==> %v, %v", s == nil, len(s))
+}

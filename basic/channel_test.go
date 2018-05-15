@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 	"sync"
@@ -54,4 +55,15 @@ func TestChannelGetFromClosed(t *testing.T) {
 	}()
 
 	wg.Wait()
+}
+
+func TestBufferedChannel(t *testing.T) {
+	ch := make(chan int, 2)
+	ch <- 1
+
+	// channel will be always block until available
+	for range ch {
+		fmt.Println(<-ch)
+	}
+
 }
