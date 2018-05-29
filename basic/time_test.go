@@ -40,6 +40,11 @@ func TestParseDuration(t *testing.T) {
 	log.Println(time.ParseDuration(durationStr))
 }
 
+func TestDurationZeroValue(t *testing.T) {
+	var d time.Duration
+	log.Printf("zero value of duration is %v", d)
+}
+
 type logWriter struct{}
 
 func (writer logWriter) Write(bytes []byte) (int, error) {

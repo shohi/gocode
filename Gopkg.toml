@@ -41,3 +41,5 @@
 [[constraint]]
   name = "github.com/otiai10/gosseract"
 
+[[constraint]]
+  name = "github.com/stretchr/testify/assert"

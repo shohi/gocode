@@ -44,7 +44,8 @@ func TestURLQuery(t *testing.T) {
 	log.Println(base.Query())
 
 	log.Println(base.RawQuery)
-	log.Println(base.Path)
+
+	log.Printf("Scheme: %v, Host: %v, Port: %v, Path: %v", base.Scheme, base.Host, base.Port(), base.Path)
 }
 
 func TestURLPathPrefix(t *testing.T) {

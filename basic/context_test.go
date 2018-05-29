@@ -63,3 +63,12 @@ func TestDoCancelMultiTimes(t *testing.T) {
 	doCancelFunc()
 	doCancelFunc()
 }
+
+func TestCancelWithParent(t *testing.T) {
+	ctx, _ := context.WithCancel(context.Background())
+	subCtx, cancel := context.WithCancel(ctx)
+
+	cancel()
+	log.Printf("sub context called cancel, sub context: %v, parent context: %v",
+		subCtx.Err().Error(), ctx.Err())
+}
