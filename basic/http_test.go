@@ -34,4 +34,9 @@ func TestCreateHTTPRequest(t *testing.T) {
 		log.Println(err)
 	}
 	log.Println(req.Body == nil)
+
+	// ErrorCase
+	// leading space error, ref: https://github.com/golang/go/issues/24246
+	req, err = http.NewRequest("GEt", " http:/localhost:8080", nil)
+	log.Printf("err: %v", err)
 }
