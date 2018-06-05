@@ -1,4 +1,4 @@
-package basic
+package http
 
 import (
 	"log"
@@ -41,10 +41,8 @@ func TestURLQuery(t *testing.T) {
 	for key, value := range base.Query() {
 		log.Printf("key ==> %s, value ==> %v", key, value)
 	}
-	log.Println(base.Query())
 
-	log.Println(base.RawQuery)
-
+	log.Printf("raw query: %v, parsed query: %v", base.RawQuery, base.Query())
 	log.Printf("Scheme: %v, Host: %v, Port: %v, Path: %v", base.Scheme, base.Host, base.Port(), base.Path)
 }
 

@@ -18,3 +18,21 @@ func TestDereference(t *testing.T) {
 	log.Println(*strPtr)
 
 }
+
+func TestPointer(t *testing.T) {
+	type MyT struct {
+		val string
+	}
+	var aa *MyT
+	bb := MyT{val: "hello"}
+	aa = &bb
+	f := func() MyT {
+		return *aa
+	}
+
+	cc := f()
+	cc.val = "world"
+
+	log.Printf("value, aa: %v, bb: %v, cc: %v", aa.val, bb.val, cc.val)
+
+}

@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"time"
 )
 
 func TestHTTPTestServer(t *testing.T) {
@@ -16,9 +15,7 @@ func TestHTTPTestServer(t *testing.T) {
 		w.WriteHeader(http.StatusOK)
 	}))
 
-	log.Println(server)
-
-	time.Sleep(20 * time.Second)
+	log.Printf("server addr: %v, server: %v", server.URL, server)
 }
 
 func TestHTTPRecorderReuse(t *testing.T) {
