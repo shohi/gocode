@@ -1,6 +1,8 @@
 package basic
 
 import (
+	"encoding/base64"
+	"log"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -8,5 +10,10 @@ import (
 
 func TestBase64Encoding(t *testing.T) {
 	assert := assert.New(t)
-	assert.Fail("ERROR", "Base64Encoding error")
+
+	url := "http://localhost:8080/hello/newyorker"
+	str := base64.URLEncoding.EncodeToString([]byte(url))
+	log.Printf("content: %v", str)
+	// assert.Fail("ERROR", "Base64Encoding error")
+	assert.Nil(nil)
 }

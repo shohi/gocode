@@ -7,7 +7,7 @@ import (
 )
 
 func TestParseRequest(t *testing.T) {
-	url := "http://localhost:9090/hello/newyorker?season=summer&season=spring&show=tony&nokey"
+	url := "http://localhost?season=summer&season=spring&show=tony&nokey&srcurl=http://localhost:8082"
 
 	req, _ := http.NewRequest("GET", url, nil)
 	values := req.URL.Query()
@@ -15,4 +15,9 @@ func TestParseRequest(t *testing.T) {
 	key := "season"
 	log.Printf("key: %v, value: %v", key, values.Get(key))
 
+	log.Printf("key: %v, value: %v", "srcurl", values.Get("srcurl"))
+
+	// case sensitive!!!
+	key = "SHOW"
+	log.Printf("key: %v, value: %v", key, values.Get(key))
 }
