@@ -16,4 +16,7 @@ func TestBase64Encoding(t *testing.T) {
 	log.Printf("content: %v", str)
 	// assert.Fail("ERROR", "Base64Encoding error")
 	assert.Nil(nil)
+
+	bs, err := base64.URLEncoding.DecodeString(str)
+	log.Printf("url: %v, err: %v", string(bs), err)
 }
