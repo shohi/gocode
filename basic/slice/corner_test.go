@@ -21,3 +21,9 @@ func TestInitialization(t *testing.T) {
 		log.Printf("%d ===> %v", k, v)
 	}
 }
+
+func TestInitWithNil(t *testing.T) {
+	var bs []byte
+	bs = nil
+	log.Printf("byte slice: %v", bs)
+}
