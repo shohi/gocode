@@ -67,3 +67,12 @@ func TestBufferedChannel(t *testing.T) {
 	}
 
 }
+
+func TestSendNilToChannel(t *testing.T) {
+	ch := make(chan error, 2)
+	ch <- nil
+	ch <- nil
+
+	res := <-ch
+	log.Printf("get result: %v", res)
+}
