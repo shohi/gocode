@@ -1,7 +1,7 @@
 package basic
 
 import (
-	"fmt"
+	"log"
 	"testing"
 )
 
@@ -10,8 +10,13 @@ type Code int
 const (
 	CodeNormal Code = iota + 900
 	CodeErr
+
+	CodeTimeout
 )
 
 func TestIota(t *testing.T) {
-	fmt.Printf("%v ==> %T", CodeErr, CodeErr)
+
+	log.Printf("%v ==> %T", CodeErr, CodeErr)
+
+	log.Printf("%v ==> %T", CodeTimeout, CodeTimeout)
 }
