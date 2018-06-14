@@ -1,12 +1,14 @@
 package http
 
 import (
+	"context"
 	"errors"
 	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
 	"testing"
+	"time"
 )
 
 func readContent(resp *http.Response) ([]byte, error) {
@@ -36,3 +38,29 @@ func TestServer(t *testing.T) {
 	bs, _ := readContent(resp)
 	log.Printf("content: %s", string(bs))
 }
+
+func TestListenAndServe(t *testing.T) {
+	server := &http.Server{Addr: ":10010"}
+	errC := make(chan error)
+	go func() { errC <- server.ListenAndServe() }()
+
+	ctx, cancel := context.WithTimeout(context.Background(), 500*time.Millisecond)
+	defer cancel()
+
+	select {
+	case <-ctx.Done():
+		log.Println("Hello world")
+	case <-errC:
+		log.Println("Hello error")
+	}
+}
+
+// this blocks
+/*
+func TestListenAndServeToHang(t *testing.T) {
+	server := &http.Server{Addr: ":10010"}
+	err := server.ListenAndServe()
+
+	log.Println(err)
+}
+*/

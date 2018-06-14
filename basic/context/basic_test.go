@@ -1,14 +1,13 @@
-package basic
+package context
 
 import (
+	"context"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"testing"
 	"time"
-
-	"golang.org/x/net/context"
 )
 
 type key string
@@ -71,4 +70,9 @@ func TestCancelWithParent(t *testing.T) {
 	cancel()
 	log.Printf("sub context called cancel, sub context: %v, parent context: %v",
 		subCtx.Err().Error(), ctx.Err())
+}
+
+func TestBackgroundDone(t *testing.T) {
+	ctx := context.Background()
+	log.Println(ctx.Done())
 }

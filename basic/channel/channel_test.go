@@ -76,3 +76,14 @@ func TestSendNilToChannel(t *testing.T) {
 	res := <-ch
 	log.Printf("get result: %v", res)
 }
+
+// Reading from nil channel will block forever
+/*
+func TestReceiveFromNilChannel(t *testing.T) {
+	var ch chan error
+	ch = nil
+
+	val := <-ch
+	log.Println(val)
+}
+*/
