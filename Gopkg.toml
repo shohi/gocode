@@ -42,4 +42,13 @@
   name = "github.com/otiai10/gosseract"
 
 [[constraint]]
-  name = "github.com/stretchr/testify/assert"
+  name = "github.com/stretchr/testify"
+
+[[constraint]]
+  name = "github.com/axgle/mahonia"
+
+[[constraint]]
+  name = "github.com/djimenez/iconv-go"
+
+[[constraint]]
+  name = "golang.org/x/text"

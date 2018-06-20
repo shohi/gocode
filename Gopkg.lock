@@ -15,15 +15,39 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/axgle/mahonia"
+  packages = ["."]
+  revision = "3358181d7394e26beccfae0ffde05193ef3be33a"
+
+[[projects]]
+  branch = "master"
   name = "github.com/bramvdbogaerde/go-scp"
   packages = [".","auth"]
   revision = "e1fc87afa32536b6f2a58fc9cf937432aeff91e7"
+
+[[projects]]
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/djimenez/iconv-go"
+  packages = ["."]
+  revision = "8960e66bd3dacbc8773962b40eb82fc18c63c127"
 
 [[projects]]
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
   revision = "629574ca2a5df945712d3079857300b5e4da0236"
   version = "v1.4.2"
+
+[[projects]]
+  name = "github.com/go-sql-driver/mysql"
+  packages = ["."]
+  revision = "d523deb1b23d913de5bdada721a6071e71283618"
+  version = "v1.4.0"
 
 [[projects]]
   branch = "master"
@@ -56,6 +80,12 @@
   version = "v1.0.1"
 
 [[projects]]
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/spf13/afero"
   packages = [".","mem"]
@@ -86,6 +116,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/stretchr/testify"
+  packages = ["assert"]
+  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
+  version = "v1.2.2"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["curve25519","ed25519","ed25519/internal/edwards25519","internal/chacha20","poly1305","ssh"]
@@ -110,6 +146,12 @@
   revision = "6eab0e8f74e86c598ec3b6fad4888e0c11482d48"
 
 [[projects]]
+  name = "google.golang.org/appengine"
+  packages = ["cloudsql"]
+  revision = "b1f26356af11148e710935ed1ac8a7f5702c7612"
+  version = "v1.1.0"
+
+[[projects]]
   branch = "v3"
   name = "gopkg.in/alexcesaro/quotedprintable.v3"
   packages = ["."]
@@ -130,6 +172,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "cb361b25c68ef111e36e40447173c7ad81445649d900011110bf2e6dd5ae716b"
+  inputs-digest = "b4dbcdbe60a5bd4d549b3092d73a0b5f9bc0934be8b69f8d184e74280b15610b"
   solver-name = "gps-cdcl"
   solver-version = 1
