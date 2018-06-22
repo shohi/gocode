@@ -3,7 +3,6 @@ package time
 import (
 	"fmt"
 	"log"
-	"strings"
 	"testing"
 	"time"
 )
@@ -17,11 +16,6 @@ func TestSleep(t *testing.T) {
 	log.Println(bb)
 }
 
-func TestDuration(t *testing.T) {
-	d := 1000 * time.Second
-	log.Println(strings.ToUpper(d.String()))
-}
-
 func TestUnixTimestamp(t *testing.T) {
 	log.Println(time.Now().Unix())
 	log.Println(time.Unix(0, 0))
@@ -32,18 +26,6 @@ func TestTimeString(t *testing.T) {
 }
 
 // Duration must come with unit
-func TestParseDuration(t *testing.T) {
-	durationStr := "10s"
-	log.Println(time.ParseDuration(durationStr))
-
-	durationStr = "10"
-	log.Println(time.ParseDuration(durationStr))
-}
-
-func TestDurationZeroValue(t *testing.T) {
-	var d time.Duration
-	log.Printf("zero value of duration is %v", d)
-}
 
 type logWriter struct{}
 
