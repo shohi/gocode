@@ -52,3 +52,6 @@
 
 [[constraint]]
   name = "golang.org/x/text"
+
+[[constraint]]
+  name = "cloud.google.com/go/translate"
