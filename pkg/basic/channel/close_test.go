@@ -12,5 +12,17 @@ func TestCloseChannel(t *testing.T) {
 	case err, ok := <-ch:
 		log.Println(err, ok)
 	}
+}
 
+func TestReadFromClosedBufferedChannel(t *testing.T) {
+	ch := make(chan int, 10)
+	for k := 0; k < 5; k++ {
+		ch <- k
+	}
+
+	close(ch)
+
+	for k := range ch {
+		log.Println(k)
+	}
 }
