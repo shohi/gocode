@@ -54,4 +54,7 @@
   name = "golang.org/x/text"
 
 [[constraint]]
-  name = "cloud.google.com/go/translate"
+  name = "cloud.google.com/go"
+
+[[constraint]]
+  name = "github.com/docker/docker"
