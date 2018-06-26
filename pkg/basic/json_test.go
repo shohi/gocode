@@ -1,5 +1,7 @@
 package basic
 
+// ref, https://play.golang.org/p/SXeyH-4a_bP
+
 import (
 	"encoding/json"
 	"fmt"
