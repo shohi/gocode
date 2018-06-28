@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"path"
 	"testing"
 )
 
@@ -17,5 +18,9 @@ func TestPathJoin(t *testing.T) {
 		log.Fatal(err)
 	}
 	fmt.Println(base.ResolveReference(u))
+}
 
+func TestPathClean(t *testing.T) {
+	p := "/usr/data//1"
+	log.Println(path.Clean(p))
 }
