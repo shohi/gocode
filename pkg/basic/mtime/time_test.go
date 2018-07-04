@@ -1,4 +1,4 @@
-package time
+package mtime
 
 import (
 	"fmt"
@@ -38,4 +38,12 @@ func TestTimeZoneTransform(t *testing.T) {
 	log.SetFlags(0)
 	log.SetOutput(new(logWriter))
 	log.Printf("hello new time format")
+}
+
+func TestTimeParse(t *testing.T) {
+	timeStr := "2018-07-04T11:32:57.706638128Z"
+
+	tm, err := time.Parse(time.RFC3339Nano, timeStr)
+	log.Println(tm, err)
+
 }

@@ -3,7 +3,6 @@ package string
 import (
 	"fmt"
 	"log"
-	"regexp"
 	"strconv"
 	"strings"
 	"testing"
@@ -50,25 +49,9 @@ func TestStringFromNIL(t *testing.T) {
 	log.Println(b == "")
 }
 
-func TestStringTrim(t *testing.T) {
-	str := "     hello   "
-	log.Println(strings.TrimSpace(str))
-
-	str = "a/b/c/d/e///"
-	log.Println(strings.TrimRight(str, "/"))
-	log.Println(strings.TrimRight("/a/b/c/d/", "//")) // ==> /a/b/c/d
-}
-
 func TestStringConvert(t *testing.T) {
 	aa := 10
 	log.Println(strconv.Itoa(aa))
-}
-
-func TestStringTrimSuffix(t *testing.T) {
-	aa := "aaa/bbb"
-	bb := strings.TrimPrefix(aa, "aaa/")
-
-	log.Println(aa, bb)
 }
 
 func TestStringAffix(t *testing.T) {
@@ -96,12 +79,6 @@ func TestStringType(t *testing.T) {
 	log.Println(fmt.Sprintf("%T", s))
 
 	log.Println(string(c))
-}
-
-func TestStringSplit(t *testing.T) {
-	str := ""
-	strSlice := strings.Split(str, ",")
-	log.Println(strSlice)
 }
 
 func TestStringRepeat(t *testing.T) {
@@ -145,18 +122,7 @@ func TestStringSlice(t *testing.T) {
 	}
 }
 
-func TestStringSplitWithRegularExpression(t *testing.T) {
-	// ptn := "[,，\\s+]"
-	ptn := "\\s+|[,，]"
-	strSlice := regexp.MustCompile(ptn).Split("a   b   c d  e   f,g,h，HHH", -1)
-
-	for k, v := range strSlice {
-		log.Printf("%d. %s\n", k, v)
-	}
-}
-
 func TestStringOutput(t *testing.T) {
 	str := `"hello world"`
-
 	log.Printf("%s\n", str)
 }

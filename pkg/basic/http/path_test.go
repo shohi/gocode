@@ -3,6 +3,7 @@ package http
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"net/url"
 	"path"
 	"testing"
@@ -23,4 +24,11 @@ func TestPathJoin(t *testing.T) {
 func TestPathClean(t *testing.T) {
 	p := "/usr/data//1"
 	log.Println(path.Clean(p))
+}
+
+func TestRequestPath(t *testing.T) {
+	r, err := http.NewRequest("GET", "http://localhost:9090/app/path/to/file", nil)
+
+	log.Printf("create request err: %v", err)
+	log.Printf("request path: %v", r.URL.Path)
 }
