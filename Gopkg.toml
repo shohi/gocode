@@ -58,3 +58,6 @@
 
 [[constraint]]
   name = "github.com/docker/docker"
+
+[[constraint]]
+  name = "github.com/gorilla/mux"
