@@ -26,6 +26,27 @@ func TestSelectForChannel(t *testing.T) {
 	}
 }
 
+func TestBreakAndContinueForSelect(t *testing.T) {
+	tick := time.Tick(100 * time.Millisecond)
+	boom := time.After(500 * time.Millisecond)
+	ch := make(chan string, 1)
+
+	for {
+		select {
+		case <-tick:
+			log.Println("tick.")
+			ch <- "continue"
+			break
+		case <-boom:
+			log.Println("BOOM!")
+			return
+		case <-ch:
+			log.Println("    .")
+			time.Sleep(50 * time.Millisecond)
+		}
+	}
+}
+
 func TestSelectForOrder(t *testing.T) {
 
 	// Select Not keep the order of declaration
