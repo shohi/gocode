@@ -22,3 +22,7 @@ setting/
 
 # remove ssh keys
 keys.toml
+
+
+# remove binary
+**/main
