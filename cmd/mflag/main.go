@@ -8,8 +8,11 @@ package main
 // Go provides a `flag` package supporting basic
 // command-line flag parsing. We'll use this package to
 // implement our example command-line program.
-import "flag"
-import "fmt"
+import (
+	"flag"
+	"fmt"
+	"time"
+)
 
 func main() {
 
@@ -25,6 +28,8 @@ func main() {
 	// similar approach to the `word` flag.
 	numbPtr := flag.Int("numb", 42, "an int")
 	boolPtr := flag.Bool("fork", false, "a bool")
+
+	durationPtr := flag.Duration("d", 1500*time.Millisecond, "a duration")
 
 	// It's also possible to declare an option that uses an
 	// existing var declared elsewhere in the program.
@@ -44,6 +49,7 @@ func main() {
 	fmt.Println("word:", *wordPtr)
 	fmt.Println("numb:", *numbPtr)
 	fmt.Println("fork:", *boolPtr)
+	fmt.Println("duration:", *durationPtr)
 	fmt.Println("svar:", svar)
 	fmt.Println("tail:", flag.Args())
 }
