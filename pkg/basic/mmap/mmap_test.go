@@ -23,3 +23,10 @@ func TestMapKeyWithUint(t *testing.T) {
 
 	log.Printf("non exist key: %v, value: %v", uint(20), m[uint(20)])
 }
+
+func TestTraverseNilMap(t *testing.T) {
+	var m map[string]int
+	for k, v := range m {
+		log.Printf("key ==> %v, value ==> %v", k, v)
+	}
+}

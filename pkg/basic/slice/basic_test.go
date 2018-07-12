@@ -53,23 +53,6 @@ func TestSliceInitialization(t *testing.T) {
 	log.Println(aa)
 }
 
-func TestNilSliceTraverse(t *testing.T) {
-	var a []*int
-
-	for k, v := range a {
-		log.Println(k, v)
-	}
-
-	bb := []string{"hello", "world"}
-	for k := range bb {
-		log.Println("key: ", k)
-	}
-
-	for k, v := range bb {
-		log.Println("key: ", k, ", value: ", v)
-	}
-}
-
 func TestSlicePrint(t *testing.T) {
 	fn := func(strs ...string) {
 		fmt.Printf("slice: %v", strs)
