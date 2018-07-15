@@ -61,3 +61,6 @@
 
 [[constraint]]
   name = "github.com/gorilla/mux"
+
+[[constraint]]
+  name = "github.com/jinzhu/copier"

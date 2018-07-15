@@ -3,6 +3,7 @@ package slice
 import (
 	"log"
 	"testing"
+	"time"
 )
 
 func TestNilSliceTraverse(t *testing.T) {
@@ -20,4 +21,16 @@ func TestNilSliceTraverse(t *testing.T) {
 	for k, v := range bb {
 		log.Println("key: ", k, ", value: ", v)
 	}
+}
+
+func TestNilSliceLen(t *testing.T) {
+	var a []int
+	log.Printf("nil slice length: %v", len(a))
+
+	var tt time.Time
+	log.Printf("time: %v", tt)
+
+	current := time.Now()
+	log.Printf("time after: %v", current.Add(-100*time.Hour).After(tt))
+
 }
