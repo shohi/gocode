@@ -1,4 +1,4 @@
-package basic
+package mreflect
 
 import (
 	"fmt"

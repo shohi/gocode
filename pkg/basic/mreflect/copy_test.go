@@ -1,4 +1,4 @@
-package basic
+package mreflect
 
 import (
 	"log"
@@ -19,10 +19,11 @@ func TestCopierSlice(t *testing.T) {
 	}
 	var hh helloCP
 	copier.Copy(&hh, &h)
+	copier.Copy(&hh.vals[0], &h.vals[0])
 
 	// hh.vals = []string{"ef", "gh"}
 	hh.vals[0] = "ef"
-	hh.name = "hh"
+	hh.name = "abcdefgh"
 
 	log.Printf("original object: %v \n copied object: %v", h, hh)
 

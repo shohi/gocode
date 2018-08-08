@@ -31,36 +31,48 @@
 
 [[constraint]]
   name = "github.com/bramvdbogaerde/go-scp"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/BurntSushi/toml"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/atrox/homedir"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/otiai10/gosseract"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/stretchr/testify"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/axgle/mahonia"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/djimenez/iconv-go"
+  branch = "master"
 
 [[constraint]]
   name = "golang.org/x/text"
+  branch = "master"
 
 [[constraint]]
   name = "cloud.google.com/go"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/docker/docker"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/gorilla/mux"
+  branch = "master"
 
 [[constraint]]
   name = "github.com/jinzhu/copier"
+  branch = "master"
