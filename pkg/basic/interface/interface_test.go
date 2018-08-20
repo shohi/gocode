@@ -1,11 +1,11 @@
-package basic
+package interface_test
 
 import (
 	"log"
 	"testing"
 )
 
-func TestInterfaceForNil(t *testing.T) {
+func TestNil(t *testing.T) {
 
 	tFunc := func(val interface{}) {
 		log.Println(val == nil)
@@ -18,7 +18,7 @@ func TestInterfaceForNil(t *testing.T) {
 	tFunc(false)
 }
 
-func TestInterfaceSwitchWithBreakReturn(t *testing.T) {
+func TestSwitchWithBreakReturn(t *testing.T) {
 	tFunc := func(val interface{}) {
 		switch t := val.(type) {
 		case int:
@@ -68,7 +68,7 @@ func (b BBImp) Hello() {
 	log.Println("BB Imp")
 }
 
-func TestInterfaceCompatibility(t *testing.T) {
+func TestCompatibility(t *testing.T) {
 	var aa AA = AAImp{}
 	var bb BB = BBImp{}
 	var cc CC = CCImp{}
@@ -76,7 +76,7 @@ func TestInterfaceCompatibility(t *testing.T) {
 	aa.Hello()
 	bb.Hello()
 
-	// following assigment will cause syntax error
+	// following assignment will cause syntax error
 	// Error: CC does not implement AA
 	// aa = cc
 	cc.World()
