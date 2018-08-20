@@ -26,5 +26,4 @@ func TestCopierSlice(t *testing.T) {
 	hh.name = "abcdefgh"
 
 	log.Printf("original object: %v \n copied object: %v", h, hh)
-
 }

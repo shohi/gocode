@@ -49,3 +49,22 @@ func TestCopier_Slice(t *testing.T) {
 
 	log.Printf("old: %v \n new: %v", oldRes, newRes)
 }
+
+func TestCopier_Nested(t *testing.T) {
+	type DeepNest struct {
+		Parent struct {
+			Child struct {
+				value string
+			}
+		}
+	}
+
+	oldRes := &DeepNest{}
+	oldRes.Parent.Child.value = "hello"
+
+	newRes := &DeepNest{}
+	copier.Copy(newRes, oldRes)
+	newRes.Parent.Child.value = "world"
+
+	log.Printf("old: %v \n new: %v", oldRes, newRes)
+}
