@@ -1,7 +1,7 @@
-package basic
+package stag
 
 import (
-	"fmt"
+	"log"
 	"reflect"
 	"testing"
 )
@@ -18,11 +18,8 @@ func printField() {
 	for i := 0; i < v.NumField(); i++ {
 		field := v.Field(i)
 		tag := field.Tag
-		fmt.Println("field ==> ", field)
-		fmt.Println("tag ==> ", tag)
-		fmt.Println("[my]tag ==> ", tag.Get("my"))
+		log.Printf("field ==> %v, tag ==> %v, [my]tag ==> %v", field, tag, tag.Get("my"))
 	}
-	fmt.Println()
 }
 
 func TestTag(t *testing.T) {
