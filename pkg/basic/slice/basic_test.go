@@ -81,3 +81,10 @@ func TestEmptyAndNilSlice(t *testing.T) {
 	s = make([]int, 0)
 	log.Printf("s is nil ==> %v, %v", s == nil, len(s))
 }
+
+func TestSliceLiteral(t *testing.T) {
+	intS := []int{1, 2, 3, 4}
+	for k, v := range intS {
+		log.Printf("%v => %v", k, v)
+	}
+}

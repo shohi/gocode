@@ -27,3 +27,16 @@ func TestCopierSlice(t *testing.T) {
 
 	log.Printf("original object: %v \n copied object: %v", h, hh)
 }
+
+func TestShadowCopy(t *testing.T) {
+	h := helloCP{
+		name: "bob",
+		vals: []string{"paris", "newyork"},
+	}
+
+	h1 := &h
+	h2 := *h1
+	h2.name = "tom"
+
+	log.Printf("h1: %v, h2: %v", *h1, h2)
+}
