@@ -31,3 +31,10 @@ func TestDurationFromFloat64(t *testing.T) {
 	log.Printf("duration: %v", int64(aa))
 	log.Printf("duration: %v", time.Duration(aa)*time.Second)
 }
+
+func TestDurationConversion(t *testing.T) {
+	start := time.Now()
+	time.Sleep(100 * time.Millisecond)
+	end := time.Now()
+	log.Printf("duration: %v, %v, %d", end.Sub(start), end.Sub(start)/time.Millisecond, end.Sub(start)/time.Millisecond)
+}

@@ -3,10 +3,12 @@ package http
 import (
 	"context"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
+	"strings"
 	"testing"
 	"time"
 )
@@ -25,8 +27,10 @@ func readContent(resp *http.Response) ([]byte, error) {
 func TestServer(t *testing.T) {
 	l, _ := net.Listen("tcp", "127.0.0.1:0")
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		data := []byte("hello")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("hello"))
+		w.Header().Add("x-count", fmt.Sprintf("%v", len(data)))
+		w.Write(data)
 	})
 
 	s := &http.Server{Handler: handler}
@@ -34,6 +38,7 @@ func TestServer(t *testing.T) {
 
 	resp, err := http.Get("http://" + l.Addr().String())
 	log.Println(err, resp.Body)
+	log.Println(resp.Header)
 
 	bs, _ := readContent(resp)
 	log.Printf("content: %s", string(bs))
@@ -64,3 +69,19 @@ func TestListenAndServeToHang(t *testing.T) {
 	log.Println(err)
 }
 */
+
+func TestResponseHeader(t *testing.T) {
+	myHandler := func(w http.ResponseWriter, r *http.Request) {
+		str := strings.Repeat("data", 1024*1024*8)
+		data := []byte(str)
+		w.Header().Add("Content-Length", fmt.Sprintf("%d", len(data)))
+		w.Write(data)
+	}
+	server := &http.Server{
+		Addr:    ":10011",
+		Handler: http.HandlerFunc(myHandler),
+	}
+	err := server.ListenAndServe()
+
+	log.Println("err: " + err.Error())
+}
