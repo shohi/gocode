@@ -1,4 +1,4 @@
-package basic
+package mbit_test
 
 import (
 	"log"
@@ -51,4 +51,15 @@ func TestBitShift(t *testing.T) {
 
 	shift = uint(6)
 	log.Printf("shift %d ==> %b", shift, bb>>shift)
+}
+
+func TestBitAdd(t *testing.T) {
+	v := 0
+	v |= 1
+
+	v += 1 << 3
+
+	log.Printf("value - [%d] - [%v]", v, v)
+	1001
+	101
 }

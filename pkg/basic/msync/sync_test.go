@@ -1,4 +1,4 @@
-package basic
+package msync_test
 
 import (
 	"log"
