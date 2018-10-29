@@ -88,3 +88,11 @@ func TestSliceLiteral(t *testing.T) {
 		log.Printf("%v => %v", k, v)
 	}
 }
+
+func TestSliceRangeForEmpty(t *testing.T) {
+	var s []int
+	s = nil
+	for _, v := range s {
+		log.Printf("%v", v)
+	}
+}

@@ -21,6 +21,11 @@ func TestParseRequest(t *testing.T) {
 	// case sensitive!!!
 	key = "SHOW"
 	log.Printf("key: %v, value: %v", key, values.Get(key))
+
+	for k, v := range values {
+		log.Printf("key: %v, value: [%v]", k, v)
+	}
+
 }
 
 func TestGetRequest(t *testing.T) {
@@ -36,4 +41,9 @@ func TestGetRequest(t *testing.T) {
 		resp, err = http.NewRequest("GET", "https://www.douban.com", buf)
 	}
 	log.Println(resp, err)
+}
+
+func TestRequestAcceptEncoding(t *testing.T) {
+	req, _ := http.NewRequest("GET", "https://www.douban.com", nil)
+	log.Printf("accept encoding: [%v]", req.Header.Get("Accept-Encoding"))
 }
