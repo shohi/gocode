@@ -9,7 +9,10 @@ package channel
  * 3. 对于不带缓冲的channel的接收操作 happens-before 相应channel的发送操作完成
  */
 
-import "testing"
+import (
+	"log"
+	"testing"
+)
 
 func TestHappensBefore_1(t *testing.T) {
 	var c = make(chan int, 10)
@@ -34,6 +37,7 @@ func TestHappensBefore_2(t *testing.T) {
 
 	go f()
 	c <- 0
+	log.Printf("msg: [%v]", a)
 }
 
 func TestHappensBefore_3(t *testing.T) {

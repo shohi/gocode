@@ -10,7 +10,7 @@ func TestCloseChannel(t *testing.T) {
 	close(ch)
 	select {
 	case err, ok := <-ch:
-		log.Println(err, ok)
+		log.Printf("error: [%v], ok: [%v]", err, ok)
 	}
 }
 

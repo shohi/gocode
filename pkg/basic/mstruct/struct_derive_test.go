@@ -1,4 +1,4 @@
-package basic
+package mstruct_test
 
 import (
 	"fmt"
@@ -64,7 +64,7 @@ func TestEmbeddedStruct(t *testing.T) {
 	base := BaseStruct{}
 	derive := DeriveStruct{BaseStruct: base}
 
-	// Note: embed struct will call embeded struct's method
+	// Note: embed struct will call embedded struct method
 	// this is just syntax sugar, not a inheritance
 	// derive.SayHello()
 	derive.Greet() // ==> will print "Hello BaseStruct"

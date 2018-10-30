@@ -1,4 +1,4 @@
-package basic
+package mstruct_test
 
 import (
 	"fmt"
