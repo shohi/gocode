@@ -23,6 +23,11 @@ func TestAppendWithNil(t *testing.T) {
 	var a *int
 	s = append(s, a)
 	log.Printf("slice: %v, len: %v, cap: %v", s, len(s), cap(s))
+
+	//
+	var chSlice []chan struct{}
+	chSlice = append(chSlice, nil)
+	log.Printf("slice: %v, len: %v, cap: %v", s, len(s), cap(s))
 }
 
 func TestSliceModification(t *testing.T) {

@@ -73,6 +73,7 @@ func TestSendNilToChannel(t *testing.T) {
 	ch <- nil
 	ch <- nil
 
+	log.Printf("channel - len: [%v], cap: [%v]", len(ch), cap(ch))
 	res := <-ch
 	log.Printf("get result: %v", res)
 }
@@ -87,3 +88,12 @@ func TestReceiveFromNilChannel(t *testing.T) {
 	log.Println(val)
 }
 */
+
+func TestChannelCopy(t *testing.T) {
+	ch := make(chan struct{}, 10)
+
+	var ch2 chan struct{}
+	ch2 = ch
+	log.Printf("%T, %v, %p", ch, ch, &ch)
+	log.Printf("%T, %v, %p", ch2, ch2, &ch2)
+}
