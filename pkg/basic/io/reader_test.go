@@ -1,4 +1,4 @@
-package io
+package io_test
 
 import (
 	"bytes"
