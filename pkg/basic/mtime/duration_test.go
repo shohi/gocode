@@ -16,6 +16,10 @@ func TestParseDuration(t *testing.T) {
 	durationStr := "10s"
 	log.Println(time.ParseDuration(durationStr))
 
+	// 100 year
+	durationStr = "876000h"
+	log.Println(time.ParseDuration(durationStr))
+
 	durationStr = "10"
 	log.Println(time.ParseDuration(durationStr))
 }
