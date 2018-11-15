@@ -1,4 +1,4 @@
-package basic
+package fmt_test
 
 import (
 	"fmt"
@@ -18,4 +18,21 @@ func TestFormatSprint(t *testing.T) {
 	arr := []string{"hello", "world"}
 	assert.NotNil(fmt.Sprint(arr))
 	log.Println(fmt.Sprint(arr))
+}
+
+func TestFormatEnum(t *testing.T) {
+	assert := assert.New(t)
+
+	type RaftState uint32
+	const (
+		Follower uint32 = iota
+		Leader
+		Candidate
+		Shutdown
+	)
+
+	s := fmt.Sprintf("%v", Follower)
+
+	// assert.Equal(s, "Follower")
+	assert.Equal(s, "0")
 }
