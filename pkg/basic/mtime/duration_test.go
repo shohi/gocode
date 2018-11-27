@@ -42,3 +42,12 @@ func TestDurationConversion(t *testing.T) {
 	end := time.Now()
 	log.Printf("duration: %v, %v, %d", end.Sub(start), end.Sub(start)/time.Millisecond, end.Sub(start)/time.Millisecond)
 }
+
+func TestDurationDivide(t *testing.T) {
+	t1 := 1 * time.Second
+	t2 := 1 * time.Millisecond
+
+	log.Printf("ms ==> %v", float64(t1/t2))
+	log.Printf("ms ==> %v", float64(t1)/float64(t2))
+
+}

@@ -30,6 +30,11 @@ func TestTraverseNilMap(t *testing.T) {
 	for k, v := range m {
 		log.Printf("key ==> %v, value ==> %v", k, v)
 	}
+
+	m = nil
+	for k, v := range m {
+		log.Printf("key ==> %v, value ==> %v", k, v)
+	}
 }
 
 func TestKeyExistence(t *testing.T) {

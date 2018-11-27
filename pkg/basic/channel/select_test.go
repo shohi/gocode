@@ -254,3 +254,35 @@ func TestSelectForDefaultAndOneReady(t *testing.T) {
 	<-leaderWait
 	log.Printf("end time: %v", time.Now())
 }
+
+func TestSelectWithFullChannel(t *testing.T) {
+	// assert := assert.New(t)
+
+	asyncFn := func(ch chan string, s string) {
+		select {
+		case ch <- s:
+		default:
+		}
+	}
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	ch := make(chan string, 5)
+	go func() {
+		defer wg.Done()
+		for k := 0; k < 6; k++ {
+			asyncFn(ch, fmt.Sprintf("hw-%d", k))
+		}
+	}()
+	time.Sleep(1 * time.Second)
+	go func() {
+		defer wg.Done()
+		for k := 0; k < 6; k++ {
+			s := <-ch
+			log.Printf("%d ==> %s", k, s)
+		}
+	}()
+
+	wg.Wait()
+}

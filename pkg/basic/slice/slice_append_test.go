@@ -66,3 +66,11 @@ func TestSliceNilReset(t *testing.T) {
 
 	log.Printf("slice: %v", dd)
 }
+
+func TestSliceAppendNil(t *testing.T) {
+	dst := []byte("hello")
+	var app []byte
+	dst = append(dst, app...)
+
+	log.Printf("value ==> %v", dst)
+}

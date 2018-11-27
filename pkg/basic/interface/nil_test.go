@@ -29,3 +29,27 @@ func TestNilAsReceiver(t *testing.T) {
 	d := current.AndThen(then)
 	d()
 }
+
+type result struct {
+	err  error
+	code int
+}
+
+func TestNilInterface(t *testing.T) {
+
+	fn := func() *result {
+		var r *result = nil
+		if 2 > 3 {
+			r = &result{}
+		}
+		return r
+	}
+	var rr *result
+	rr = &result{}
+	rr = nil
+
+	r := fn()
+	log.Printf("is nil ==> %v", r == nil)
+	log.Printf("is nil ==> %v", rr == nil)
+	log.Printf("%v", r)
+}

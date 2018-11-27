@@ -1,7 +1,10 @@
 package http
 
 import (
+	"context"
 	"log"
+	"net"
+	"sync"
 	"testing"
 	"time"
 
@@ -70,4 +73,55 @@ func TestFastHTTP(t *testing.T) {
 	}()
 
 	time.Sleep(100 * time.Second)
+}
+
+func TestFastHTTP_Server(t *testing.T) {
+	s := fasthttp.Server{}
+	var wg sync.WaitGroup
+
+	addr := "0.0.0.0:0"
+	ln, err := net.Listen("tcp4", addr)
+
+	if err != nil {
+		log.Fatalf("error in net.Listen: %s", err)
+	}
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		err := s.Serve(ln)
+		t.Fatalf("err: %v", err)
+	}()
+
+	time.Sleep(100 * time.Millisecond)
+
+	log.Printf("address: %v", ln.Addr())
+}
+
+func TestFastHTTP_Client(t *testing.T) {
+	url := "http://0.0.0.1:9002"
+
+	client := fasthttp.Client{}
+	req := fasthttp.AcquireRequest()
+	resp := fasthttp.AcquireResponse()
+
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
+
+	respCh := make(chan error, 1)
+	var startTime = time.Now()
+	go func() {
+		req.SetRequestURI(url)
+		err := client.Do(req, resp)
+		respCh <- err
+	}()
+
+	var err error
+	select {
+	case <-ctx.Done():
+		err = ctx.Err()
+	case err = <-respCh:
+	}
+
+	log.Printf("===> err: %v, duration: %v", err, time.Since(startTime))
+
 }
