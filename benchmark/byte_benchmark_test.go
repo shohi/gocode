@@ -68,10 +68,10 @@ func BenchmarkByteConvert(b *testing.B) {
 	}
 
 	var val uint64
-	var r *rand.Rand
+	// var r *rand.Rand
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
-			r = rand.New(rand.NewSource(99))
+			// r = rand.New(rand.NewSource(99))
 			for k := 0; k < b.N; k++ {
 				val = rand.Uint64()
 				bm.fn(val)

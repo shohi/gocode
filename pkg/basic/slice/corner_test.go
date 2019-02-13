@@ -48,3 +48,46 @@ func TestSliceMutation(t *testing.T) {
 	nbb := bs[:100]
 	log.Printf("long: content - [%v], len - [%d], cap - [%d]", string(nbb), len(nbb), cap(nbb))
 }
+
+func TestSliceAssign(t *testing.T) {
+	type dataType struct {
+		val int
+	}
+
+	// case 1 - use equal
+	// NOTE: change will propagate
+	aa := []dataType{dataType{val: 1}, dataType{val: 2}}
+
+	bb := aa
+	bb[0].val = 10
+	log.Printf("use equal: a => %v, b => %v", aa, bb)
+
+	// case 2 - use append
+	// NOTE: change does not propagate
+	var cc []dataType
+	cc = append(cc, aa...)
+	cc[0].val = 20
+
+	log.Printf("use append: a => %v, c => %v", aa, cc)
+}
+
+func TestSliceWithElementChange(t *testing.T) {
+	type dataType struct {
+		val int
+	}
+
+	aa := []dataType{dataType{val: 1}, dataType{val: 2}}
+
+	log.Printf("last aa: %v", aa)
+
+	for _, d := range aa {
+		d.val += 100
+	}
+
+	// NOTE: aa not changed
+	log.Printf("current aa: %v", aa)
+
+	// direct change
+	aa[0].val += 200
+	log.Printf("direct aa: %v", aa)
+}

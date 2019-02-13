@@ -1,4 +1,4 @@
-package mflag
+package flag_test
 
 import (
 	"flag"

@@ -1,4 +1,4 @@
-package basic
+package serde_test
 
 // ref, https://play.golang.org/p/SXeyH-4a_bP
 
@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"testing"
+	"time"
 )
 
 type hello struct {
@@ -125,4 +126,17 @@ func TestJsonList(t *testing.T) {
 	for _, v := range dds {
 		fmt.Println(fn(v))
 	}
+}
+
+func TestJSON_Time(t *testing.T) {
+	type JData struct {
+		Duration time.Duration `json:"duration"`
+	}
+
+	d := JData{
+		Duration: 100 * time.Second,
+	}
+
+	bs, err := json.Marshal(&d)
+	log.Printf("value: [%v], err: [%v]", string(bs), err)
 }

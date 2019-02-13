@@ -22,3 +22,22 @@ func TestDeferGotchaNilFunc(t *testing.T) {
 
 	log.Println("runs")
 }
+
+func TestDefer_After(t *testing.T) {
+
+	fn := func() {
+		a := 10
+
+		if a > 0 {
+			log.Printf("===> in condition")
+			return
+		}
+
+		// This defer will not be run
+		defer func() {
+			log.Printf("====> defer called")
+		}()
+	}
+
+	fn()
+}

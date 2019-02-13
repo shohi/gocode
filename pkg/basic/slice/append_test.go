@@ -28,6 +28,20 @@ func TestAppendWithNil(t *testing.T) {
 	var chSlice []chan struct{}
 	chSlice = append(chSlice, nil)
 	log.Printf("slice: %v, len: %v, cap: %v", s, len(s), cap(s))
+
+	// slice append slice with expandation
+	aa := []int{1, 2, 3}
+	var bb []int
+	aa = append(aa, bb...)
+	log.Printf("slice aa: %v", aa)
+
+	bb = []int{4, 5}
+	aa = append(aa, bb...)
+	log.Printf("slice aa: %v", aa)
+
+	bb = nil
+	aa = append(aa, bb...)
+	log.Printf("slice aa: %v", aa)
 }
 
 func TestSliceModification(t *testing.T) {
