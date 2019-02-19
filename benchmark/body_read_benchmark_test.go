@@ -2,10 +2,15 @@ package benchmark
 
 import (
 	"bytes"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
+
+var probBuf [1]byte
 
 func readWithIOUtil(resp *http.Response) []byte {
 	defer func() {
@@ -35,7 +40,18 @@ func readWithBodyRead(resp *http.Response) []byte {
 	}
 
 	data := make([]byte, resp.ContentLength)
-	resp.Body.Read(data)
+
+	_, err := io.ReadFull(resp.Body, data)
+	if err != nil {
+		return nil
+	}
+
+	if err == nil {
+		_, err = io.ReadFull(resp.Body, probBuf[0:])
+		if err == nil {
+			return nil
+		}
+	}
 
 	return data
 }
@@ -53,9 +69,10 @@ func BenchmarkRead(b *testing.B) {
 
 	for _, bm := range benchmarks {
 		b.Run(bm.name, func(b *testing.B) {
-			// r = rand.New(rand.NewSource(99))
+			// r := rand.New(rand.NewSource(1))
+			// size := r.Int63n(1024*1024*2) + 1
+			var size int64 = 1024 * 1024 * 2
 			for k := 0; k < b.N; k++ {
-				const size = 1024 * 1024 * 2
 				resp.Body = ioutil.NopCloser(bytes.NewReader(make([]byte, size)))
 				resp.ContentLength = size
 
@@ -63,5 +80,28 @@ func BenchmarkRead(b *testing.B) {
 			}
 		})
 	}
+}
 
+func TestReadBody(t *testing.T) {
+	assert := assert.New(t)
+
+	tests := []struct {
+		name string
+		fn   func(resp *http.Response) []byte
+	}{
+		{"ReadWithIOUtil", readWithIOUtil},
+		{"ReadWithBody", readWithBodyRead},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			var resp http.Response
+			const size = 1024 * 1024 * 2
+			resp.Body = ioutil.NopCloser(bytes.NewReader(make([]byte, size)))
+			resp.ContentLength = size
+
+			data := test.fn(&resp)
+			assert.NotNil(data)
+		})
+	}
 }
