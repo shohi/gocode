@@ -12,6 +12,12 @@ import (
 
 var probBuf [1]byte
 
+type nopWriter struct{}
+
+func (w nopWriter) Write(p []byte) (int, error) {
+	return len(p), nil
+}
+
 func readWithIOUtil(resp *http.Response) []byte {
 	defer func() {
 		if resp.Body != nil {
@@ -56,6 +62,34 @@ func readWithBodyRead(resp *http.Response) []byte {
 	return data
 }
 
+func readWithCopyBuffer(resp *http.Response) []byte {
+	defer func() {
+		if resp.Body != nil {
+			resp.Body.Close()
+		}
+	}()
+
+	if resp.Body == nil || resp.ContentLength <= 0 {
+		return nil
+	}
+
+	data := make([]byte, resp.ContentLength)
+
+	_, err := io.CopyBuffer(nopWriter{}, resp.Body, data)
+	if err != nil {
+		return nil
+	}
+
+	if err == nil {
+		_, err = io.ReadFull(resp.Body, probBuf[0:])
+		if err == nil {
+			return nil
+		}
+	}
+
+	return data
+}
+
 func BenchmarkRead(b *testing.B) {
 	benchmarks := []struct {
 		name string
@@ -63,6 +97,7 @@ func BenchmarkRead(b *testing.B) {
 	}{
 		{"ReadWithIOUtil", readWithIOUtil},
 		{"ReadWithBody", readWithBodyRead},
+		{"ReadWithCopyBuffer", readWithCopyBuffer},
 	}
 
 	var resp http.Response
