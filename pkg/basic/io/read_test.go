@@ -10,6 +10,13 @@ import (
 	"time"
 )
 
+func TestRead_ReadAll(t *testing.T) {
+	data := []byte{}
+
+	_, err := ioutil.ReadAll(bytes.NewReader(data))
+	log.Println(err)
+}
+
 // ioutil.ReadAll is slower than io.Copy
 
 func TestReadAllvsCopy(t *testing.T) {

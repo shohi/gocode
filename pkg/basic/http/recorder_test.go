@@ -1,24 +1,14 @@
-package io_test
+package http_test
 
 import (
-	"bytes"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httptest"
-	"os"
-	"path/filepath"
 	"testing"
 )
 
-func TestIOUtilRead(t *testing.T) {
-	data := []byte{}
-
-	_, err := ioutil.ReadAll(bytes.NewReader(data))
-	log.Println(err)
-}
-
-func TestResponseRecorder(t *testing.T) {
+func TestHTTP_ResponseRecorder(t *testing.T) {
 	// data := []byte{}
 	var data []byte
 	log.Println(data)
@@ -49,28 +39,4 @@ func TestResponseRecorder(t *testing.T) {
 	// 200
 	// text/html; charset=utf-8
 	// <html><body>Hello World!</body></html>
-}
-
-func TestReadDir(t *testing.T) {
-	dirpath := "../.."
-	fileList, _ := ioutil.ReadDir(dirpath)
-	abspath, _ := filepath.Abs(dirpath)
-	log.Println(abspath)
-	for _, f := range fileList {
-		log.Println(filepath.Join(dirpath, f.Name()))
-	}
-}
-
-func TestReadFileInDir(t *testing.T) {
-	dirpath := "."
-	fileList, _ := ioutil.ReadDir(dirpath)
-	for _, f := range fileList {
-		log.Println(filepath.Join(dirpath, f.Name()))
-	}
-}
-
-func TestRemoveDir(t *testing.T) {
-	dirpath := "non-exist/non-exist"
-	err := os.RemoveAll(dirpath)
-	log.Println(err)
 }

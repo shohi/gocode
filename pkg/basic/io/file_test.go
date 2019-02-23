@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestTempFile_in_ioutil(t *testing.T) {
+func TestFile_TempFile(t *testing.T) {
 	rootDir := "testdata"
 	fs, err := ioutil.TempFile(rootDir, "subs")
 	if err != nil {

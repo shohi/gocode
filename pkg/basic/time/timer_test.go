@@ -2,6 +2,7 @@ package time_test
 
 import (
 	"log"
+	"runtime"
 	"sync"
 	"testing"
 	"time"
@@ -18,4 +19,33 @@ func TestTimer(t *testing.T) {
 	})
 
 	wg.Wait()
+}
+
+func TestTimer_Goroutine(t *testing.T) {
+	grStart := runtime.NumGoroutine()
+	log.Printf("goroutine start number: %v", grStart)
+	memStart := &runtime.MemStats{}
+	runtime.ReadMemStats(memStart)
+	log.Printf("memstat start: %v", memStart.NumGC)
+
+	var wg sync.WaitGroup
+	cnt := 1
+	wg.Add(cnt)
+	for k := 0; k < cnt; k++ {
+		go func(v int) {
+			for j := 0; j < 1000; j++ {
+				tr := time.NewTimer(1 * time.Microsecond)
+				<-tr.C
+			}
+			wg.Done()
+		}(k)
+	}
+
+	wg.Wait()
+
+	grEnd := runtime.NumGoroutine()
+	memEnd := &runtime.MemStats{}
+	runtime.ReadMemStats(memEnd)
+	log.Printf("goroutine end number: %v", grEnd)
+	log.Printf("memstat end: %v", memEnd.NumGC)
 }
