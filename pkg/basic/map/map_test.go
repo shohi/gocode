@@ -50,3 +50,20 @@ func TestKeyExistence(t *testing.T) {
 	val, ok = m["c"]
 	log.Printf("value: %v, existence: %v", val, ok)
 }
+
+func TestMapValueType(t *testing.T) {
+	m := make(map[string]string, 10)
+	m["hello"] = "world"
+
+	mm := m
+	log.Printf("%v- %v", m, mm)
+
+	mm["German"] = "berlin"
+	log.Printf("%v- %v", m, mm)
+}
+
+func TestMapLen(t *testing.T) {
+	m := make(map[string]string, 10)
+
+	log.Printf("len: %v", len(m))
+}
