@@ -24,3 +24,10 @@ func TestStdContextWithGolang(t *testing.T) {
 	ctx := goctx.Background()
 	stdContext(ctx)
 }
+
+func TestCtx_Cancel_Idempotent(t *testing.T) {
+	_, cancel := context.WithCancel(context.Background())
+	cancel()
+	cancel()
+
+}

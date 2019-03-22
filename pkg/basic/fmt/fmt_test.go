@@ -36,3 +36,8 @@ func TestFormatEnum(t *testing.T) {
 	// assert.Equal(s, "Follower")
 	assert.Equal(s, "0")
 }
+
+func TestFormatNumeric(t *testing.T) {
+	// add padding zeros, zero must be the leading
+	log.Printf("value: %06d", 12345)
+}
