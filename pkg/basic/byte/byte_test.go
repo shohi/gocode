@@ -39,3 +39,13 @@ func TestByteLiteral(t *testing.T) {
 	bb := []byte{0x00, 0x01}
 	log.Println(bb)
 }
+
+func TestByte_Repeat(t *testing.T) {
+	data := make([]byte, 10)
+
+	for i := range data {
+		data[i] = 2
+	}
+
+	log.Printf("data: %v", data)
+}
