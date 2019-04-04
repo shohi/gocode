@@ -27,3 +27,7 @@ func TestStringCompare(t *testing.T) {
 
 	log.Println(a == b)
 }
+
+func TestCmp_Numeric(t *testing.T) {
+	log.Printf("value: %v", '9' >= '1')
+}

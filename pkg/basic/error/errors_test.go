@@ -24,3 +24,10 @@ func TestTypeAssert(t *testing.T) {
 	data := res.([]byte)
 	log.Printf("%v", data)
 }
+
+func TestErrorsWrap(t *testing.T) {
+	err := errors.New("test")
+	err2 := errors.Wrap(err, "wrap")
+
+	log.Printf("cause: %v", errors.Cause(err2))
+}

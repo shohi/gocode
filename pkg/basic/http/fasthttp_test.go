@@ -125,3 +125,13 @@ func TestFastHTTP_Client(t *testing.T) {
 	log.Printf("===> err: %v, duration: %v", err, time.Since(startTime))
 
 }
+
+func TestFastHTTP_Headers(t *testing.T) {
+	req := fasthttp.AcquireRequest()
+	req.Header.Set("k1", "v1")
+	req.Header.Set("k2", "v2")
+
+	req.Header.VisitAll(func(key, value []byte) {
+		log.Printf("%v: %v", string(key), string(value))
+	})
+}

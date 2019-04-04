@@ -38,7 +38,7 @@ func TestMapNoInitialize(t *testing.T) {
 
 	log.Println(m)
 
-	// map must be intialized before use
+	// map must be initialized before use
 	m = make(map[string]int)
 	for k := 0; k < 10; k++ {
 		m[strconv.Itoa(k)] = k

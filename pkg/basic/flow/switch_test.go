@@ -46,3 +46,15 @@ func TestSwitch_fallthrough(t *testing.T) {
 	assert.Equal(output, "second fallthrough and default")
 	log.Printf("output: %v", output)
 }
+
+func TestSwitch_default(t *testing.T) {
+
+	switch {
+	case 1 == 2:
+		log.Printf("1 < 2")
+	case 3 > 3:
+		log.Printf("3 == 3")
+	default:
+		log.Printf("default")
+	}
+}
