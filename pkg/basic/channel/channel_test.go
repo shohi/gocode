@@ -96,4 +96,6 @@ func TestChannelCopy(t *testing.T) {
 	ch2 = ch
 	log.Printf("%T, %v, %p", ch, ch, &ch)
 	log.Printf("%T, %v, %p", ch2, ch2, &ch2)
+
+	t.Logf("hello")
 }

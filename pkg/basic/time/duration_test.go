@@ -5,6 +5,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestDuration(t *testing.T) {
@@ -49,5 +51,11 @@ func TestDurationDivide(t *testing.T) {
 
 	log.Printf("ms ==> %v", float64(t1/t2))
 	log.Printf("ms ==> %v", float64(t1)/float64(t2))
+}
 
+func TestDuration_Parse_LeadingSpace(t *testing.T) {
+	durStr := "     10s"
+	d, err := time.ParseDuration(durStr)
+	assert.NotNil(t, err)
+	log.Printf("====> duration: %v, error: %v", d, err)
 }
