@@ -29,3 +29,6 @@ conf.toml
 
 # remove binary
 **/main
+
+# test data
+**/testdata
