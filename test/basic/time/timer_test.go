@@ -49,3 +49,11 @@ func TestTimer_Goroutine(t *testing.T) {
 	log.Printf("goroutine end number: %v", grEnd)
 	log.Printf("memstat end: %v", memEnd.NumGC)
 }
+
+func TestTimer_StopTwice(t *testing.T) {
+	tm := time.NewTimer(2 * time.Second)
+	res := tm.Stop()
+	res2 := tm.Stop()
+
+	log.Printf("1st stop: %v, 2nd stop: %v", res, res2)
+}
