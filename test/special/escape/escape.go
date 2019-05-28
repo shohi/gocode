@@ -1,35 +1,19 @@
-package main
+package escape
 
-import "log"
-
-type session struct {
-	id     string
-	fields sessionFields
+type Displayer interface {
+	Display() string
 }
 
-type field [2]interface{}
-type sessionFields [2]field
-
-func (s *session) getFields() sessionFields {
-	return s.fields
+type Field struct {
+	Name  string
+	Value interface{}
 }
 
-func (s *session) setFields(f sessionFields) {
-	s.fields = f
+func (f Field) Display() string {
+	return f.Name
 }
 
-func emit(s session, fs []field) {
-	res := append(fs, s.fields[:]...)
-
-	log.Printf("field: %v", res)
-}
-
-func main() {
-	s := session{id: "1"}
-	s.setFields(sessionFields{
-		{"k1", 1},
-		{"k2", "v2"},
-	})
-	emit(s, []field{{"k3", "v3"}})
-
+func appendField(buf []Field, f Field) []Field {
+	buf = append(buf, f)
+	return buf
 }

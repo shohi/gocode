@@ -64,3 +64,8 @@ func TestDuration_format(t *testing.T) {
 	d := 10 * time.Second
 	log.Printf("duration: %v", d)
 }
+
+func TestDurationSub(t *testing.T) {
+	startT := time.Now()
+	time.Since(startT)
+}

@@ -2,25 +2,37 @@ package pool
 
 import "sync"
 
+// A Pool is the interface to reuse objects.
+// After `Put` is called, object MUST not be used.
 type Pool interface {
 	Put(interface{})
 	Get() interface{}
 }
 
-type ringPool struct {
+type pool struct {
 	lock sync.Mutex
 	r    *Ring
 	fn   func() interface{} // factory
 }
 
-func NewRingPool(fn func() interface{}) Pool {
-	return &ringPool{
-		r:  NewRing(1024),
+// NewPool creates a new growable pool
+func NewPool(cap int, fn func() interface{}) Pool {
+	return &pool{
+		r:  NewRing(cap, true),
 		fn: fn,
 	}
 }
 
-func (p *ringPool) Get() interface{} {
+// NewFixedPool creates a new pool with fixed size.
+func NewFixedPool(cap int, fn func() interface{}) Pool {
+	return &pool{
+		r:  NewRing(cap, false),
+		fn: fn,
+	}
+}
+
+// Get get an object from pool, create a new one if non exist.
+func (p *pool) Get() interface{} {
 	p.lock.Lock()
 	defer p.lock.Unlock()
 
@@ -31,7 +43,8 @@ func (p *ringPool) Get() interface{} {
 	return p.fn()
 }
 
-func (p *ringPool) Put(v interface{}) {
+// Put returns object to the pool for reuse.
+func (p *pool) Put(v interface{}) {
 	p.lock.Lock()
 	defer p.lock.Unlock()
 
