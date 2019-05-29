@@ -1,7 +1,10 @@
 package pool
 
-// Ring is growing container, when item exceeds the
-// size, new backend array will be doubled to hold new data.
+// Ring is a data structure that uses a single, bounded
+// array as if it were connected end-to-end.
+// If Ring is growable, the backend array will be doubled
+// to hold new data when there is no space left. Otherwise, LRU
+// item will be overrided by the new one.
 type Ring struct {
 	buf     []interface{}
 	readAt  int
@@ -12,6 +15,7 @@ type Ring struct {
 	growable bool
 }
 
+// NewRing creates a new ring.
 func NewRing(cap int, growable bool) *Ring {
 	return &Ring{
 		buf:      make([]interface{}, cap),
@@ -23,7 +27,7 @@ func NewRing(cap int, growable bool) *Ring {
 	}
 }
 
-// Read will take an item from ring if available
+// Read takes an item from ring using FIFO strategy if available
 // and mark the space unoccupied.
 func (r *Ring) Read() (v interface{}, ok bool) {
 	if r.readable == 0 {
@@ -37,8 +41,9 @@ func (r *Ring) Read() (v interface{}, ok bool) {
 	return v, true
 }
 
-// Read will take an item from ring if available
-// and mark the space unoccupied.
+// Write puts an item to the ring. If ring is full and growable,
+// backend array will be doubled to hold the new one. Otherwise,
+// LRU item will be replace by the new one.
 func (r *Ring) Write(v interface{}) {
 	if r.readable == r.cap && r.growable {
 		r.grow(r.cap)
@@ -72,15 +77,16 @@ func (r *Ring) grow(n int) {
 	r.writeAt = r.readable
 }
 
-func (r *Ring) copyTo(data []interface{}) {
+// copyTo copies ring's backend array to `dst` slice
+func (r *Ring) copyTo(dst []interface{}) {
 	if r.readable == 0 {
 		return
 	}
 
 	if r.readAt < r.writeAt {
-		copy(data, r.buf[r.readAt:r.writeAt])
+		copy(dst, r.buf[r.readAt:r.writeAt])
 	} else {
-		copy(data, r.buf[r.readAt:])
-		copy(data[(len(r.buf)-r.readAt):], r.buf[:r.writeAt])
+		copy(dst, r.buf[r.readAt:])
+		copy(dst[(len(r.buf)-r.readAt):], r.buf[:r.writeAt])
 	}
 }

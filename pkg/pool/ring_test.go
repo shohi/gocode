@@ -6,9 +6,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRing_Growable(t *testing.T) {
+func TestGrowableRing_Read(t *testing.T) {
 	assert := assert.New(t)
-	r := NewRing(1, true)
+	r := NewRing(2, true)
 
 	type item struct {
 		value int
@@ -16,6 +16,26 @@ func TestRing_Growable(t *testing.T) {
 
 	_, ok := r.Read()
 	assert.False(ok)
+
+	v1 := &item{value: 1}
+	v2 := &item{value: 2}
+
+	r.Write(v1)
+	r.Write(v2)
+
+	// FIFO
+	y, ok := r.Read()
+	assert.True(ok)
+	assert.Equal(y, v1)
+}
+
+func TestGrowableRing_Write(t *testing.T) {
+	assert := assert.New(t)
+	r := NewRing(1, true)
+
+	type item struct {
+		value int
+	}
 
 	v1 := &item{value: 1}
 	v2 := &item{value: 2}
@@ -35,7 +55,30 @@ func TestRing_Growable(t *testing.T) {
 	assert.False(ok)
 }
 
-func TestRing_NonGrowable(t *testing.T) {
+func TestFixedRing_Read(t *testing.T) {
+	assert := assert.New(t)
+	r := NewRing(2, false)
+
+	type item struct {
+		value int
+	}
+
+	_, ok := r.Read()
+	assert.False(ok)
+
+	v1 := &item{value: 1}
+	v2 := &item{value: 2}
+
+	r.Write(v1)
+	r.Write(v2)
+
+	// FIFO
+	y, ok := r.Read()
+	assert.True(ok)
+	assert.Equal(y, v1)
+}
+
+func TestFixedRing_Write(t *testing.T) {
 	assert := assert.New(t)
 	r := NewRing(1, false)
 

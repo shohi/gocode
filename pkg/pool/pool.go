@@ -15,14 +15,6 @@ type pool struct {
 	fn   func() interface{} // factory
 }
 
-// NewPool creates a new growable pool
-func NewPool(cap int, fn func() interface{}) Pool {
-	return &pool{
-		r:  NewRing(cap, true),
-		fn: fn,
-	}
-}
-
 // NewFixedPool creates a new pool with fixed size.
 func NewFixedPool(cap int, fn func() interface{}) Pool {
 	return &pool{

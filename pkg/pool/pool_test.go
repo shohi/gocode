@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestPool_Fixed(t *testing.T) {
+func TestPool(t *testing.T) {
 	assert := assert.New(t)
 
 	type item struct {
@@ -27,27 +27,6 @@ func TestPool_Fixed(t *testing.T) {
 	y := p.Get().(*item)
 
 	assert.Equal(y.value, 20)
-}
-
-func TestPool_Growable(t *testing.T) {
-	assert := assert.New(t)
-
-	type item struct {
-		value int
-	}
-	p := NewPool(1, func() interface{} {
-		return &item{value: 10}
-	})
-
-	v1 := p.Get().(*item)
-	v2 := p.Get().(*item)
-	v2.value = 20
-
-	p.Put(v1)
-	p.Put(v2)
-
-	y := p.Get().(*item)
-	assert.Equal(y.value, 10)
 }
 
 // copy from `sync.Pool`
