@@ -1,5 +1,7 @@
 package pool
 
+// TODO: compare ring implementation from `https://github.com/Workiva/go-datastructures/blob/master/queue/ring.go`
+
 // Ring is a data structure that uses a single, bounded
 // array as if it were connected end-to-end.
 // If Ring is growable, the backend array will be doubled
