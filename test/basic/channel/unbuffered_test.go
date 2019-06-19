@@ -3,6 +3,7 @@ package channel_test
 import (
 	"log"
 	"testing"
+	"time"
 )
 
 func TestChannel_Unbuffer_Sender(t *testing.T) {
@@ -13,6 +14,6 @@ func TestChannel_Unbuffer_Sender(t *testing.T) {
 		log.Printf("send complete")
 	}()
 
-	<-ch
+	time.Sleep(5 * time.Second)
 	log.Printf("receive complete")
 }

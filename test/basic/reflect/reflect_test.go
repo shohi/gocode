@@ -16,9 +16,9 @@ func TestReflect(t *testing.T) {
 
 	v := reflect.ValueOf(input)
 
-	fmt.Println(v.Type())
-	fmt.Println(v.Elem())
-	fmt.Println(v.Interface())
+	fmt.Printf("===> type: %v", v.Type())
+	fmt.Printf("===> elem: %v", v.Elem())
+	fmt.Printf("===> interface: %v", v.Interface())
 
 	// print field info
 	for k := 0; k < v.Elem().NumField(); k++ {
