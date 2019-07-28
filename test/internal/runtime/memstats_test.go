@@ -1,8 +1,10 @@
 package runtime_test
 
 import (
+	"log"
 	"runtime"
 	"testing"
+	"unsafe"
 
 	"github.com/shohi/gocode/test/util"
 )
@@ -66,7 +68,7 @@ func appendField(buf []Field, v interface{}) []Field {
 	return buf
 }
 
-func TestMemStat_Interface(t *testing.T) {
+func TestMemStat_StructValueInterface(t *testing.T) {
 	var m1 runtime.MemStats // before assignment
 	var m2 runtime.MemStats // after assignment
 
@@ -85,4 +87,24 @@ func TestMemStat_Interface(t *testing.T) {
 
 	_ = v
 	_ = b
+}
+
+func TestMemStat_SliceValueInterface(t *testing.T) {
+	var m1 runtime.MemStats // before assignment
+	var m2 runtime.MemStats // after assignment
+
+	runtime.GC()
+	const sz = 2
+
+	var arr [sz]interface{}
+	runtime.ReadMemStats(&m1)
+
+	for k := 0; k < sz; k++ {
+		arr[k] = k
+	}
+	runtime.ReadMemStats(&m2)
+
+	util.PrintMemStats("before", &m1)
+	util.PrintMemStats("after", &m2)
+	log.Printf("size: %v", unsafe.Sizeof(arr))
 }

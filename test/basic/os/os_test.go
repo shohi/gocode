@@ -1,4 +1,4 @@
-package basic
+package os_test
 
 import (
 	"io/ioutil"
