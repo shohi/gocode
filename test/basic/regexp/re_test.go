@@ -13,3 +13,11 @@ func TestReMatch(t *testing.T) {
 	re := regexp.MustCompile("(?i).*" + ptn + ".*")
 	log.Println(re.Match([]byte(str)))
 }
+
+func TestPatternReCompile(t *testing.T) {
+	ptn := "reading"
+	str := "reading golang book"
+
+	re := regexp.MustCompile(".*" + ptn + ".*")
+	log.Printf("matched: %v", re.MatchString(str))
+}

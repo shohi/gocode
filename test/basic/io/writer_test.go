@@ -1,45 +1,18 @@
 package io_test
 
 import (
-	"io/ioutil"
+	"bytes"
+	"log"
 	"os"
-	"path/filepath"
 	"testing"
 )
 
-func TestOutputBytes(t *testing.T) {
-	b := []byte("hello")
-	err := createFile("testdata/test.dat")
-	if err != nil {
-		t.Errorf("fail to write bytes to file, err: %v", err)
-	}
+func TestIOWriter(t *testing.T) {
+	w := bytes.NewBuffer(make([]byte, 0, 1024))
+	log.SetOutput(w)
+	log.Println("hello world")
 
-	err = ioutil.WriteFile("testdata/test.dat", b, 0644)
+	log.SetOutput(os.Stderr)
 
-	if err != nil {
-		t.Errorf("fail to write bytes to file, err: %v", err)
-	}
-
-}
-
-func createFile(path string) error {
-	// detect if file exists
-	_, err := os.Stat(path)
-
-	// create file if not exists
-	if os.IsNotExist(err) {
-
-		err := os.MkdirAll(filepath.Dir(path), 0777)
-		if err != nil {
-			return err
-		}
-
-		file, err := os.Create(path)
-		if err != nil {
-			return err
-		}
-		file.Close()
-	}
-
-	return nil
+	log.Printf("content: [%v], writer: [%+v]", w.String(), w)
 }
