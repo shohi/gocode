@@ -44,7 +44,6 @@ require (
 	github.com/spf13/viper v1.3.2
 	github.com/stretchr/testify v1.3.0
 	github.com/tealeg/xlsx v1.0.3
-	github.com/unidoc/unipdf/v3 v3.0.3 // indirect
 	github.com/valyala/fasthttp v1.2.0
 	go.etcd.io/bbolt v1.3.2 // indirect
 	go.uber.org/atomic v1.4.0 // indirect
