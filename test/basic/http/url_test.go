@@ -52,3 +52,15 @@ func TestURLPathPrefix(t *testing.T) {
 
 	log.Println(base.Path)
 }
+
+func TestURLParseWithoutSchema(t *testing.T) {
+	urlStr := "172.17.7.1/path/to/file"
+
+	u, err := url.Parse(urlStr)
+	if err != nil {
+		log.Printf("url parse error: %v", err)
+	} else {
+		log.Printf("url host: %v", u.Host)
+	}
+
+}
