@@ -3,6 +3,7 @@ package channel_test
 import (
 	"log"
 	"testing"
+	"time"
 )
 
 func TestCloseChannel(t *testing.T) {
@@ -25,4 +26,18 @@ func TestReadFromClosedBufferedChannel(t *testing.T) {
 	for k := range ch {
 		log.Println(k)
 	}
+}
+
+func TestChan_Close(t *testing.T) {
+	ch := make(chan string)
+	go func() {
+		ch <- "hello"
+		log.Printf("++++ running in goroutine")
+	}()
+
+	<-ch
+	time.Sleep(1 * time.Second)
+	close(ch)
+
+	log.Printf("+++++ running in main")
 }

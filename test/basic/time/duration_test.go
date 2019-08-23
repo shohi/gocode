@@ -69,3 +69,8 @@ func TestDurationSub(t *testing.T) {
 	startT := time.Now()
 	time.Since(startT)
 }
+
+func TestDuration_Cast(t *testing.T) {
+	var d float64 = 1000.01
+	log.Printf("duration: %v", time.Duration(d))
+}

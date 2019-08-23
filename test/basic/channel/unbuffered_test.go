@@ -9,7 +9,7 @@ import (
 func TestChannel_Unbuffer_Sender(t *testing.T) {
 	ch := make(chan struct{}, 0)
 	go func() {
-		// NOTE: sender doesn't block for the first time
+		// NOTE: sender will block until element is taken out
 		ch <- struct{}{}
 		log.Printf("send complete")
 	}()

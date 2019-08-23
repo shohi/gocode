@@ -21,3 +21,13 @@ func TestPatternReCompile(t *testing.T) {
 	re := regexp.MustCompile(".*" + ptn + ".*")
 	log.Printf("matched: %v", re.MatchString(str))
 }
+
+func TestReFindString(t *testing.T) {
+	ptn := "reading(.*)golang"
+	str := "reading golang book, reading again"
+
+	re := regexp.MustCompile(ptn)
+
+	log.Printf("substring indexes: %v", re.FindStringSubmatchIndex(str))
+	log.Printf("all substring match: %q\n", re.FindAllStringSubmatch(str, -1))
+}
