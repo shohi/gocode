@@ -27,6 +27,7 @@ require (
 	github.com/jinzhu/now v1.0.0
 	github.com/klauspost/cpuid v1.2.1
 	github.com/lib/pq v1.1.1 // indirect
+	github.com/mitchellh/go-ps v0.0.0-20190716172923-621e5597135b
 	github.com/nats-io/gnatsd v1.4.1 // indirect
 	github.com/nats-io/go-nats v1.7.2
 	github.com/nats-io/go-nats-streaming v0.4.4
