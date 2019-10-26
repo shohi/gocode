@@ -19,6 +19,7 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gogo/protobuf v1.2.1 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+	github.com/golang/protobuf v1.3.2
 	github.com/goph/emperror v0.17.1
 	github.com/gorilla/mux v1.7.1
 	github.com/hashicorp/go-msgpack v0.5.5 // indirect
@@ -48,12 +49,15 @@ require (
 	github.com/valyala/fasthttp v1.2.0
 	go.etcd.io/bbolt v1.3.2 // indirect
 	go.uber.org/atomic v1.4.0 // indirect
-	go.uber.org/goleak v0.0.0-0.20190429204600-71b3642dd8af
+	go.uber.org/goleak v0.10.0
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.10.0
 	golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f
 	golang.org/x/net v0.0.0-20190514140710-3ec191127204
 	golang.org/x/text v0.3.2
+	google.golang.org/grpc v1.23.1
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
+
+replace google.golang.org/grpc => github.com/grpc/grpc-go v1.23.1
