@@ -27,8 +27,10 @@ require (
 	github.com/klauspost/cpuid v1.2.1
 	github.com/mitchellh/go-ps v0.0.0-20190716172923-621e5597135b
 	github.com/nats-io/nats-server/v2 v2.1.0 // indirect
+	github.com/nats-io/nats-streaming-server v0.16.2 // indirect
 	github.com/nats-io/nats.go v1.8.1
 	github.com/nats-io/nkeys v0.1.0
+	github.com/nats-io/stan.go v0.5.0
 	github.com/nlopes/slack v0.6.0
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
 	github.com/otiai10/gosseract v2.2.1+incompatible

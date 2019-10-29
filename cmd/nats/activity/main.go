@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
-	stan "github.com/nats-io/nats-streaming.go"
 	nats "github.com/nats-io/nats.go"
+	stan "github.com/nats-io/stan.go"
 )
 
 type stanOptions struct {
