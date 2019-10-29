@@ -1,4 +1,4 @@
-package flow_test
+package switch_test
 
 import (
 	"log"
@@ -56,5 +56,23 @@ func TestSwitch_default(t *testing.T) {
 		log.Printf("3 == 3")
 	default:
 		log.Printf("default")
+	}
+}
+
+func TestSwitch_continue(t *testing.T) {
+	val := 1
+	bVal := 5
+	for k := 0; k < 10; k++ {
+		switch k {
+		case val:
+			// break flow for current `k` and go to next `k`
+			continue
+		case bVal:
+			// NOTE: break flow for current switch, not `k`
+			break
+		default:
+			// do nothing
+		}
+		log.Printf("round: %v", k)
 	}
 }

@@ -35,6 +35,7 @@ require (
 	github.com/nats-io/nats-streaming-server v0.14.1 // indirect
 	github.com/nats-io/nkeys v0.0.2
 	github.com/nats-io/nuid v1.0.1 // indirect
+	github.com/nlopes/slack v0.6.0
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
 	github.com/otiai10/gosseract v2.2.1+incompatible
 	github.com/otiai10/mint v1.2.4 // indirect
@@ -48,7 +49,7 @@ require (
 	github.com/valyala/fasthttp v1.2.0
 	go.etcd.io/bbolt v1.3.2 // indirect
 	go.uber.org/atomic v1.4.0 // indirect
-	go.uber.org/goleak v0.0.0-0.20190429204600-71b3642dd8af
+	go.uber.org/goleak v0.10.0
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.10.0
 	golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f

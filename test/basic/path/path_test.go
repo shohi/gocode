@@ -21,3 +21,8 @@ func TestFilePath_Dir(t *testing.T) {
 	p := "/"
 	log.Printf("Dir: %v, Base: %v", filepath.Dir(p), filepath.Base(p))
 }
+
+func TestFilePath_DirJoin(t *testing.T) {
+	log.Printf("joined path: %v", filepath.Join("~/tmp", "hello.github.com/world"))
+	t.Fail()
+}
