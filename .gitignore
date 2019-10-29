@@ -32,3 +32,6 @@ conf.toml
 
 # test data
 **/testdata
+
+# vendor
+vendor/

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/nats-io/go-nats"
-	stan "github.com/nats-io/go-nats-streaming"
+	stan "github.com/nats-io/nats-streaming.go"
+	nats "github.com/nats-io/nats.go"
 )
 
 func TestMessenger_STAN_Connect(t *testing.T) {
