@@ -1,19 +1,37 @@
 package regexp_test
 
 import (
-	"log"
 	"regexp"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPatternMatch(t *testing.T) {
-	pattern := "^\\d+$"
-	re, err := regexp.Compile(pattern)
-	log.Println(re, err)
+	cases := []struct {
+		name string
+		// input
+		ptn     string
+		content string
 
-	// match
-	log.Println("matched: ", re.Match([]byte("1234")))
+		expErr   bool
+		expMatch bool
+	}{
+		{"all-numeric", `^\d+$`, "1234", false, true},
+		{"all-numeric-w-leading-char", `^\d+$`, "a1234", false, false},
+		{"path-asterisk", `/page/\d+$`, "news/page/1", false, true},
+	}
 
-	// unmatched
-	log.Println("unmatched: ", re.Match([]byte("a1234")))
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			assert := assert.New(t)
+
+			re, err := regexp.Compile(c.ptn)
+			assert.Equal(c.expErr, err != nil)
+
+			if re != nil {
+				assert.Equal(c.expMatch, re.MatchString(c.content))
+			}
+		})
+	}
 }
