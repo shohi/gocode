@@ -4,14 +4,18 @@ import (
 	"context"
 	"log"
 
-	"github.com/shohi/gocode/example/grpc/pb"
 	"google.golang.org/grpc"
+
+	"github.com/shohi/gocode/example/grpc/plain/pb"
 )
 
-const PORT = "9001"
+type Config struct {
+	Addr string
+}
 
 func main() {
-	conn, err := grpc.Dial(":"+PORT, grpc.WithInsecure())
+	conf := Config{Addr: ":9001"}
+	conn, err := grpc.Dial(conf.Addr, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("grpc.Dial err: %v", err)
 	}
@@ -25,5 +29,5 @@ func main() {
 		log.Fatalf("client.Search err: %v", err)
 	}
 
-	log.Printf("resp: %s", resp.GetResponse())
+	log.Printf("resp==> %s", resp.GetResponse())
 }

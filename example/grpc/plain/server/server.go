@@ -6,13 +6,14 @@ import (
 	"log"
 	"net"
 
-	"github.com/shohi/gocode/example/grpc/pb"
+	"github.com/shohi/gocode/example/grpc/plain/pb"
 	"google.golang.org/grpc"
 )
 
 type SearchService struct{}
 
 func (s *SearchService) Search(ctx context.Context, r *pb.SearchRequest) (*pb.SearchResponse, error) {
+	log.Printf("Req==> %v", r.Request)
 	return &pb.SearchResponse{Response: r.GetRequest() + " Server"}, nil
 }
 
