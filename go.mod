@@ -12,11 +12,13 @@ require (
 	github.com/atrox/homedir v1.0.0
 	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394
 	github.com/bramvdbogaerde/go-scp v0.0.0-20191005185035-c96fe084709e
+	github.com/bsm/redeo v2.2.0+incompatible
 	github.com/djimenez/iconv-go v0.0.0-20160305225143-8960e66bd3da
 	github.com/docker/distribution v2.7.1+incompatible // indirect
 	github.com/docker/docker v1.13.1
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
+	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.3.2
@@ -38,6 +40,7 @@ require (
 	github.com/pelletier/go-toml v1.6.0
 	github.com/pkg/errors v0.8.1
 	github.com/sirupsen/logrus v1.4.2
+	github.com/smallnest/resp3 v0.0.0-20191021033603-7e2dbbfbbd22
 	github.com/spf13/cobra v0.0.5
 	github.com/spf13/viper v1.4.0
 	github.com/stretchr/testify v1.4.0
