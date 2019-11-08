@@ -20,10 +20,14 @@ require (
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/go-sql-driver/mysql v1.4.1
+	github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee // indirect
+	github.com/gobwas/pool v0.2.0 // indirect
+	github.com/gobwas/ws v1.0.2
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.3.2
 	github.com/goph/emperror v0.17.2
 	github.com/gorilla/mux v1.7.3
+	github.com/gorilla/websocket v1.4.0
 	github.com/jinzhu/copier v0.0.0-20190924061706-b57f9002281a
 	github.com/jinzhu/now v1.1.1
 	github.com/klauspost/cpuid v1.2.1
