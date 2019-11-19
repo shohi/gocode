@@ -43,6 +43,7 @@ require (
 	github.com/otiai10/mint v1.3.0 // indirect
 	github.com/pelletier/go-toml v1.6.0
 	github.com/pkg/errors v0.8.1
+	github.com/posener/h2conn v0.0.0-20180911140238-13e7df33ed15
 	github.com/sirupsen/logrus v1.4.2
 	github.com/smallnest/resp3 v0.0.0-20191021033603-7e2dbbfbbd22
 	github.com/spf13/cobra v0.0.5
