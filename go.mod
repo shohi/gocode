@@ -7,8 +7,12 @@ replace google.golang.org/grpc => github.com/grpc/grpc-go v1.23.1
 require (
 	cloud.google.com/go v0.47.0
 	github.com/BurntSushi/toml v0.3.1
+	github.com/DATA-DOG/go-sqlmock v1.3.3
 	github.com/Microsoft/go-winio v0.4.14 // indirect
 	github.com/adlio/trello v1.4.0
+	github.com/alicebob/gopher-json v0.0.0-20180125190556-5a6b3ba71ee6 // indirect
+	github.com/alicebob/miniredis v2.5.0+incompatible
+	github.com/allegro/bigcache v1.2.1
 	github.com/atrox/homedir v1.0.0
 	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394
 	github.com/bramvdbogaerde/go-scp v0.0.0-20191005185035-c96fe084709e
@@ -19,12 +23,14 @@ require (
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
+	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee // indirect
 	github.com/gobwas/pool v0.2.0 // indirect
 	github.com/gobwas/ws v1.0.2
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.3.2
+	github.com/gomodule/redigo v2.0.0+incompatible // indirect
 	github.com/goph/emperror v0.17.2
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/websocket v1.4.0
@@ -51,6 +57,8 @@ require (
 	github.com/stretchr/testify v1.4.0
 	github.com/tealeg/xlsx v1.0.5
 	github.com/valyala/fasthttp v1.6.0
+	github.com/yuin/gopher-lua v0.0.0-20191128022950-c6266f4fe8d7 // indirect
+	go.etcd.io/bbolt v1.3.3
 	go.uber.org/goleak v0.10.0
 	go.uber.org/zap v1.11.0
 	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
