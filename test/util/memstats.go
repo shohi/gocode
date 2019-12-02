@@ -14,3 +14,10 @@ func PrintMemStats(name string, m *runtime.MemStats) {
 		m.Mallocs,
 		m.Frees)
 }
+
+func PrintMemNow(name string) {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+
+	PrintMemStats(name, &m)
+}

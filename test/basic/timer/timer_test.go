@@ -1,4 +1,4 @@
-package time_test
+package timer_test
 
 import (
 	"log"
@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func TestTimer(t *testing.T) {
+func TestTimer_AfterFunc(t *testing.T) {
 	var wg sync.WaitGroup
 	wg.Add(1)
 
@@ -56,4 +56,24 @@ func TestTimer_StopTwice(t *testing.T) {
 	res2 := tm.Stop()
 
 	log.Printf("1st stop: %v, 2nd stop: %v", res, res2)
+}
+
+func TestTimer_Receive(t *testing.T) {
+	tm := time.NewTimer(100 * time.Millisecond)
+
+	tmp := <-tm.C
+	log.Printf("===> first time: %v", tmp)
+
+	tm.Stop()
+
+	log.Printf("==> timer: %v", tm)
+
+	select {
+	case <-tm.C:
+		// only emit once and stop will not close channel
+		log.Printf("====> second time")
+	case <-time.After(1 * time.Second):
+		log.Printf("===> xxxx")
+	}
+
 }
