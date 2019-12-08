@@ -6,11 +6,12 @@ import (
 )
 
 func PrintMemStats(name string, m *runtime.MemStats) {
-	log.Printf("%v: sys - %v, heap - %v, heap_objects: %v,malloc - %v, free - %v",
+	log.Printf("%v: sys - %v, heap - %v, heap_objects: %v, heap_inuse: %v, malloc - %v, free - %v",
 		name,
 		m.Sys,
-		m.HeapObjects,
 		m.HeapAlloc,
+		m.HeapObjects,
+		m.HeapInuse,
 		m.Mallocs,
 		m.Frees)
 }

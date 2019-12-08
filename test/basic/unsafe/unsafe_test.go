@@ -34,14 +34,16 @@ func TestUnsafeSizeOfForBaseStruct(t *testing.T) {
 	fmt.Printf("b: %T, %d\n", b, unsafe.Sizeof(b))
 	fmt.Printf("c: %T, %d\n", c, unsafe.Sizeof(c))
 	fmt.Printf("d: %T, %d\n", d, unsafe.Sizeof(d))
-	fmt.Printf("e: %T, %d\n", d, unsafe.Sizeof(e))
+	fmt.Printf("e: %T, %d\n", e, unsafe.Sizeof(e))
 }
 
 func TestUnsafeSizeOfDifferentType(t *testing.T) {
 	var s struct{}
-	log.Println(unsafe.Sizeof(s))
+	log.Printf("type: %T, size: %v", s, unsafe.Sizeof(s))
+
 	var i interface{}
-	log.Println(unsafe.Sizeof(i))
+	log.Printf("type: %T, size: %v", i, unsafe.Sizeof(i))
+
 	var b bool
-	log.Println(unsafe.Sizeof(b))
+	log.Printf("type: %T, size: %v", b, unsafe.Sizeof(b))
 }
