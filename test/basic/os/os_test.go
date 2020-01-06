@@ -29,10 +29,6 @@ func init() {
 	osClear["darwin"] = osClear["linux"]
 }
 
-func TestHostname(t *testing.T) {
-	log.Println(os.Hostname())
-}
-
 func TestExit(t *testing.T) {
 	log.Println("going to exit")
 	os.Exit(-21)
