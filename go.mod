@@ -48,6 +48,7 @@ require (
 	github.com/otiai10/gosseract v2.2.1+incompatible
 	github.com/otiai10/mint v1.3.0 // indirect
 	github.com/pelletier/go-toml v1.6.0
+	github.com/pierrec/lz4 v2.4.0+incompatible
 	github.com/pkg/errors v0.8.1
 	github.com/posener/h2conn v0.0.0-20180911140238-13e7df33ed15
 	github.com/sirupsen/logrus v1.4.2
