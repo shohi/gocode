@@ -31,3 +31,10 @@ func TestReFindString(t *testing.T) {
 	log.Printf("substring indexes: %v", re.FindStringSubmatchIndex(str))
 	log.Printf("all substring match: %q\n", re.FindAllStringSubmatch(str, -1))
 }
+
+func TestReEmpty(t *testing.T) {
+	ptn := ""
+	re := regexp.MustCompile(ptn)
+
+	log.Printf("empty pattern matches [%v]: %v", "abc", re.MatchString("abc"))
+}

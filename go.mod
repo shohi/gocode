@@ -36,6 +36,7 @@ require (
 	github.com/gorilla/websocket v1.4.0
 	github.com/jinzhu/copier v0.0.0-20190924061706-b57f9002281a
 	github.com/jinzhu/now v1.1.1
+	github.com/json-iterator/go v1.1.9
 	github.com/klauspost/cpuid v1.2.1
 	github.com/mitchellh/go-ps v0.0.0-20190716172923-621e5597135b
 	github.com/nats-io/nats-server/v2 v2.1.0 // indirect

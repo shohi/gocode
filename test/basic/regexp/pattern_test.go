@@ -20,6 +20,7 @@ func TestPatternMatch(t *testing.T) {
 		{"all-numeric", `^\d+$`, "1234", false, true},
 		{"all-numeric-w-leading-char", `^\d+$`, "a1234", false, false},
 		{"path-asterisk", `/page/\d+$`, "news/page/1", false, true},
+		{"empty-for-nonempty", "", "", false, true},
 	}
 
 	for _, c := range cases {
