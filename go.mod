@@ -23,6 +23,7 @@ require (
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
+	github.com/frankban/quicktest v1.7.2 // indirect
 	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee // indirect
@@ -34,6 +35,7 @@ require (
 	github.com/goph/emperror v0.17.2
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/websocket v1.4.0
+	github.com/hashicorp/memberlist v0.1.5
 	github.com/jinzhu/copier v0.0.0-20190924061706-b57f9002281a
 	github.com/jinzhu/now v1.1.1
 	github.com/json-iterator/go v1.1.9
