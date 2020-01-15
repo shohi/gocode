@@ -11,22 +11,33 @@ import (
 func TestCondWithSimpleCase(t *testing.T) {
 	var locker = new(sync.Mutex)
 	var cond = sync.NewCond(locker)
-	for i := 0; i < 40; i++ {
+	for i := 0; i < 10; i++ {
 		go func(x int) {
 			cond.L.Lock()         //获取锁
 			defer cond.L.Unlock() //释放锁
-			cond.Wait()           //等待通知,阻塞当前goroutine, 得到唤醒后会持有Lock
+			fmt.Printf("get lock => %v\n", x)
+
+			cond.Wait() //等待通知,阻塞当前goroutine, 得到唤醒后会持有Lock
 			fmt.Println(x)
-			time.Sleep(time.Second * 1)
+			time.Sleep(100 * time.Millisecond)
 		}(i)
 	}
-	time.Sleep(time.Second * 1)
-	fmt.Println("Signal...")
-	cond.Signal() // 下发一个通知给已经获取锁的goroutine
-	time.Sleep(time.Second * 1)
-	cond.Signal() // 3秒之后 下发一个通知给已经获取锁的goroutine
-	time.Sleep(time.Second * 3)
-	cond.Broadcast() //3秒之后 下发广播给所有等待的goroutine
+
+	// NOTE: 100ms后下发一个通知给已经获取锁的goroutine
+	time.Sleep(100 * time.Millisecond)
+	fmt.Println("Signal 1...")
+	cond.Signal()
+
+	// NOTE: 100ms后再下发一个通知给已经获取锁的goroutine
+	time.Sleep(100 * time.Millisecond)
+	fmt.Println("Signal 2...")
+	cond.Signal()
+
+	// NOTE: 100ms后下发广播给所有等待的goroutine
+	time.Sleep(100 * time.Millisecond)
 	fmt.Println("Broadcast...")
-	time.Sleep(time.Second * 60)
+	cond.Broadcast()
+
+	// NOTE: wait for other goroutines completed
+	time.Sleep(2 * time.Second)
 }
