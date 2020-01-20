@@ -61,6 +61,7 @@ require (
 	github.com/stretchr/testify v1.4.0
 	github.com/tealeg/xlsx v1.0.5
 	github.com/valyala/fasthttp v1.6.0
+	github.com/whilp/git-urls v0.0.0-20191001220047-6db9661140c0
 	github.com/yuin/gopher-lua v0.0.0-20191128022950-c6266f4fe8d7 // indirect
 	go.etcd.io/bbolt v1.3.3
 	go.uber.org/goleak v0.10.0
