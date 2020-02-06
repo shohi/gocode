@@ -16,6 +16,8 @@ import (
 func captureStdErrToBuffer() (sigCh chan struct{}, buf *bytes.Buffer) {
 	sigCh = make(chan struct{}, 1)
 
+	// TODO: use https://github.com/spf13/afero
+	// A FileSystem Abstraction System for Go
 	reader, writer, err := os.Pipe()
 	if err != nil {
 		panic(err)
