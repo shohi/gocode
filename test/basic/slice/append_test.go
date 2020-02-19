@@ -88,3 +88,11 @@ func TestSliceAppendNil(t *testing.T) {
 
 	log.Printf("value ==> %v", dst)
 }
+
+func TestSliceAppend_Multiple(t *testing.T) {
+	lst := []string{"a"}
+	log.Printf("list before => %v\n", lst)
+
+	lst = append(lst, "b", "c")
+	log.Printf("list after => %v\n", lst)
+}

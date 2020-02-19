@@ -15,3 +15,10 @@ func TestGetLargerSliceFromSmallerOne(t *testing.T) {
 
 	log.Printf("==> ss: {%v}, sss: {%v}", ss, sss)
 }
+
+func TestSubslice_ExtendLen(t *testing.T) {
+	arr := []int{1, 2, 3, 4}
+
+	// NOTE: last index is exclusive
+	log.Println(arr[1:len(arr)])
+}
