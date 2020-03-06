@@ -1,7 +1,9 @@
 package channel_test
 
 import (
+	"fmt"
 	"log"
+	"sync"
 	"testing"
 	"time"
 )
@@ -40,4 +42,36 @@ func TestChan_Close(t *testing.T) {
 	close(ch)
 
 	log.Printf("+++++ running in main")
+}
+
+func TestChan_CloseAfterSend(t *testing.T) {
+	ch := make(chan string, 8)
+	ready := make(chan struct{})
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func() {
+		wg.Done()
+
+		<-ch
+		close(ready)
+
+		for msg := range ch {
+			fmt.Printf("======> %v\n", msg)
+		}
+
+		fmt.Printf("goroutine one over\n")
+	}()
+
+	ch <- "start"
+	<-ready
+
+	go func() {
+		defer wg.Done()
+		ch <- "hello"
+		time.Sleep(1 * time.Second)
+		close(ch)
+	}()
+
+	wg.Wait()
+
 }
