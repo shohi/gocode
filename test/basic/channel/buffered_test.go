@@ -1,8 +1,10 @@
 package channel_test
 
 import (
+	"fmt"
 	"log"
 	"testing"
+	"time"
 )
 
 func TestBufferedChannel_Same_Goroutine(t *testing.T) {
@@ -20,4 +22,15 @@ func TestChannel_Same_Block(t *testing.T) {
 	ch := make(chan string)
 	ch <- "hello"
 	<-ch
+}
+
+func TestChannel_Unbuffered_continue(t *testing.T) {
+	ch := make(chan string)
+	go func() {
+		ch <- "hello"
+		fmt.Printf("====> send success")
+
+	}()
+
+	time.Sleep(10 * time.Second)
 }
