@@ -9,6 +9,7 @@ require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/DATA-DOG/go-sqlmock v1.4.1
 	github.com/Microsoft/go-winio v0.4.14 // indirect
+	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/adlio/trello v1.6.0
 	github.com/alicebob/miniredis v2.5.0+incompatible
 	github.com/alicebob/miniredis/v2 v2.11.1
@@ -24,6 +25,7 @@ require (
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/frankban/quicktest v1.7.2 // indirect
+	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-redis/redis v6.15.7+incompatible
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee // indirect
@@ -56,6 +58,7 @@ require (
 	github.com/pierrec/lz4 v2.4.1+incompatible
 	github.com/pkg/errors v0.9.1
 	github.com/posener/h2conn v0.0.0-20180911140238-13e7df33ed15
+	github.com/shirou/gopsutil v2.20.2+incompatible
 	github.com/sirupsen/logrus v1.4.2
 	github.com/smallnest/resp3 v0.0.0-20191021033603-7e2dbbfbbd22
 	github.com/spf13/cobra v0.0.5
