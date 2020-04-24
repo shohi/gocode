@@ -1,6 +1,7 @@
 package switch_test
 
 import (
+	"fmt"
 	"log"
 	"testing"
 
@@ -74,5 +75,22 @@ func TestSwitch_continue(t *testing.T) {
 			// do nothing
 		}
 		log.Printf("round: %v", k)
+	}
+}
+
+func TestSwitch_MultiTruth(t *testing.T) {
+	a := 1
+	b := 1
+	c := ""
+	d := []string{}
+
+	switch {
+	case a == b:
+		// only this one will print
+		fmt.Println("case 1")
+	case c == "":
+		fmt.Println("case 2")
+	case len(d) == 0:
+		fmt.Println("case 3")
 	}
 }
