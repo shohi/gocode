@@ -1,6 +1,7 @@
 package map_test
 
 import (
+	"fmt"
 	"log"
 	"testing"
 )
@@ -30,4 +31,15 @@ func TestMap_DumpEmpty(t *testing.T) {
 	m := make(map[string]string, 0)
 
 	log.Printf("map: %v", m)
+}
+
+func TestMap_TraverseUninit(t *testing.T) {
+	var m map[int64]struct{}
+
+	_, ok := m[100]
+	fmt.Printf("map uninit - test key: %v\n", ok)
+
+	m = nil
+	a := m[100]
+	fmt.Printf("map uninit - get value: %v\n", a)
 }

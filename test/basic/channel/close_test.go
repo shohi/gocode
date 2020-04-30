@@ -75,3 +75,20 @@ func TestChan_CloseAfterSend(t *testing.T) {
 	wg.Wait()
 
 }
+
+type MyStruct struct {
+	Key string
+	Val int
+}
+
+func TestChannel_RxFromClosed(t *testing.T) {
+	ch := make(chan MyStruct, 10)
+	ch <- MyStruct{Key: "k1", Val: 1}
+
+	v := <-ch
+	fmt.Printf("=====> %v\n", v)
+	close(ch)
+
+	v = <-ch
+	fmt.Printf("=====> %v\n", v)
+}
