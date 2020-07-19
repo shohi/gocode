@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestPatternMatch(t *testing.T) {
+func TestRegexp_MatchString(t *testing.T) {
 	cases := []struct {
 		name string
 		// input

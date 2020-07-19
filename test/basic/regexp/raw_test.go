@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRegExp_Raw(t *testing.T) {
+func TestRegexp_Raw(t *testing.T) {
 	assert := assert.New(t)
 
 	raw := `hello\+world`

@@ -35,6 +35,7 @@ conf.toml
 
 # vendor
 vendor/
+dep/
 
 # tmp files
 tmp/

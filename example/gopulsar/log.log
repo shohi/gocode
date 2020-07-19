@@ -1,0 +1,2 @@
+signal: interrupt
+FAIL	github.com/shohi/gocode/example/gopulsar	0.599s

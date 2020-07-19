@@ -4,17 +4,21 @@ import (
 	"log"
 	"regexp"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestReMatch(t *testing.T) {
+func TestRegexp_Match(t *testing.T) {
+	assert := assert.New(t)
+
 	ptn := "reading"
 	str := "Reading book is good"
 
 	re := regexp.MustCompile("(?i).*" + ptn + ".*")
-	log.Println(re.Match([]byte(str)))
+	assert.True(re.Match([]byte(str)))
 }
 
-func TestPatternReCompile(t *testing.T) {
+func TestRegexp_PatternCompile(t *testing.T) {
 	ptn := "reading"
 	str := "reading golang book"
 
@@ -22,7 +26,7 @@ func TestPatternReCompile(t *testing.T) {
 	log.Printf("matched: %v", re.MatchString(str))
 }
 
-func TestReFindString(t *testing.T) {
+func TestRegexp_FindString(t *testing.T) {
 	ptn := "reading(.*)golang"
 	str := "reading golang book, reading again"
 
@@ -32,7 +36,7 @@ func TestReFindString(t *testing.T) {
 	log.Printf("all substring match: %q\n", re.FindAllStringSubmatch(str, -1))
 }
 
-func TestReEmpty(t *testing.T) {
+func TestRegexp_EmptyPattern(t *testing.T) {
 	ptn := ""
 	re := regexp.MustCompile(ptn)
 

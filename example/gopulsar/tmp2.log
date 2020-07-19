@@ -1,0 +1,177 @@
+=== RUN   TestNackFailure_MultipleClient
+===> deleting topic: persistent://public/default/ack-fail-one-consumer
+time="2020-07-09T17:20:44.532845+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.535689+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51466" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.544558+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51466" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.553342+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.555832+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51467" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.563323+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51467" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.624867+08:00" level=info msg="Connected consumer" name=yqimy subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+========> grabConn success, startID: <nil>
+time="2020-07-09T17:20:44.624949+08:00" level=info msg="Created consumer" name=yqimy subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:20:44.625012+08:00" level=info msg="Closing consumer=1" name=yqimy subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:20:44.636894+08:00" level=info msg="Closed consumer" name=yqimy subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:20:44.637052+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.639535+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51468" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.648736+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51468" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.657061+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.659525+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51469" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.666091+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51469" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:20:44.679444+08:00" level=info msg="Created producer" cnx="127.0.0.1:51468 -> 127.0.0.1:6650" producer_name=standalone-0-35 topic="persistent://public/default/ack-fail-one-consumer"
+=======> successful published 10 message
+time="2020-07-09T17:20:44.754079+08:00" level=info msg="Closing producer" producer_name=standalone-0-35 topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:20:44.757964+08:00" level=info msg="Closed producer" producer_name=standalone-0-35 topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:20:44.760443+08:00" level=info msg="Started proxy" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+========> start subscribe
+
+time="2020-07-09T17:20:44.760759+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:44.761035+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51471" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:44.761069+08:00" level=info msg="Accepted client" client="127.0.0.1:51471" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+time="2020-07-09T17:20:46.765889+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51471" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:50.775476+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:50.775864+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51482" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:50.775909+08:00" level=info msg="Accepted client" client="127.0.0.1:51482" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+time="2020-07-09T17:20:52.781692+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51482" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:54.802885+08:00" level=info msg="Connected consumer" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+========> grabConn success, startID: <nil>
+time="2020-07-09T17:20:54.802957+08:00" level=info msg="Created consumer" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+======> subscribe elapse: 10.04265796s
+====> trigger closing after 1s ...
+====> s, messsge: msg-00 - 0, counter: 1, redeliver: 0, elapse: 19.926µs, last: 2.006530077s, nacking
+======> redeliver request: {226 0 0 0 <nil> <nil>}
+=======> flow request, id: 1, conn: 127.0.0.1:51482 -> 127.0.0.1:51470, flow request: 2, last message: &{226 1 0 0 <nil> 0xc0001480d0}
+=======> flow request, id: 1, conn: 127.0.0.1:51482 -> 127.0.0.1:51470, flow request: 2, last message: &{226 3 0 0 <nil> 0xc0001480d0}
+====> s, messsge: msg-00 - 1, counter: 2, redeliver: 0, elapse: 7.494µs, last: 1.000078819s, nacking
+======> redeliver request: {226 1 0 0 <nil> <nil>}
+2020/07/09 17:20:57 =====> stopping proxy...
+time="2020-07-09T17:20:57.910001+08:00" level=warning msg="Source terminated" bytes=244 err="read tcp 127.0.0.1:51470->127.0.0.1:51482: use of closed network connection" name=pulsar-proxy
+=======> closing connection...
+time="2020-07-09T17:20:57.910047+08:00" level=warning msg="Source terminated" bytes=99 err="read tcp 127.0.0.1:51472->127.0.0.1:6650: use of closed network connection" name=pulsar-proxy
+=======> closing connection...
+time="2020-07-09T17:20:57.910094+08:00" level=warning msg="Source terminated" bytes=169 err="read tcp 127.0.0.1:51470->127.0.0.1:51471: use of closed network connection" name=pulsar-proxy
+time="2020-07-09T17:20:57.9101+08:00" level=info msg="Connection closed" local_addr="127.0.0.1:51482" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:57.910265+08:00" level=info msg="Reconnecting to broker in 100ms" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:20:57.91011+08:00" level=info msg="Error reading from connection" error="Short read when reading frame size: EOF" local_addr="127.0.0.1:51482" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:57.91014+08:00" level=warning msg="Source terminated" bytes=432 err="read tcp 127.0.0.1:51483->127.0.0.1:6650: use of closed network connection" name=pulsar-proxy
+time="2020-07-09T17:20:57.910142+08:00" level=info msg="Error reading from connection" error="Short read when reading frame size: EOF" local_addr="127.0.0.1:51471" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:57.910158+08:00" level=info msg="Terminated proxy" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+2020/07/09 17:20:57 =====> stopped proxy, will restart 15s later...
+time="2020-07-09T17:20:57.910168+08:00" level=info msg="Connection closed" local_addr="127.0.0.1:51471" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:58.010438+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:58.010778+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:20:58.010827+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+====> s, messsge: msg-00 - 2, counter: 3, redeliver: 0, elapse: 6.982µs, last: 1.00006112s, nacking
+time="2020-07-09T17:20:58.821177+08:00" level=warning msg="Destination terminated" bytes=168 err="readfrom tcp 127.0.0.1:51483->127.0.0.1:6650: write tcp 127.0.0.1:51483->127.0.0.1:6650: use of closed network connection" name=pulsar-proxy
+====> s, messsge: msg-00 - 3, counter: 4, redeliver: 0, elapse: 9.763µs, last: 1.000228866s, nacking
+time="2020-07-09T17:21:00.011161+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:00.011543+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:00.011606+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:04.011624+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:04.011926+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:04.011967+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:04.011988+08:00" level=warning msg="Failed to lookup topic" error="connection error" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:21:04.012009+08:00" level=info msg="Reconnecting to broker in 200ms" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:21:04.212407+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:04.212707+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:04.212749+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:06.212824+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:06.213203+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:06.213247+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:10.213243+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:10.213526+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:10.213559+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:10.213578+08:00" level=warning msg="Failed to lookup topic" error="connection error" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:21:10.213598+08:00" level=info msg="Reconnecting to broker in 400ms" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+time="2020-07-09T17:21:10.61379+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:10.614123+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:10.614158+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:12.614212+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:12.614484+08:00" level=warning msg="Failed to connect to broker." error="dial tcp 127.0.0.1:51470: connect: connection refused" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:12.614522+08:00" level=info msg="Connection closed" remote_addr="pulsar://127.0.0.1:51470"
+2020/07/09 17:21:12 =====> restarting proxy...
+time="2020-07-09T17:21:12.910261+08:00" level=info msg="Started proxy" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+2020/07/09 17:21:12 =====> restarted proxy...
+time="2020-07-09T17:21:12.910436+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:21:12.912959+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51515" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:21:12.922976+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51515" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:21:12.930635+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:21:12.933004+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51516" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:21:12.952456+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51516" remote_addr="pulsar://localhost:6650"
+time="2020-07-09T17:21:12.975358+08:00" level=info msg="Connected consumer" name=direct_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+========> grabConn success, startID: <nil>
+time="2020-07-09T17:21:12.975426+08:00" level=info msg="Created consumer" name=direct_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+====> ns, messsge: msg-00 - 0, redeliver: 0, elapse: 7.401685ms
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 0 0 0 <nil> 0xc00028a340}
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 1 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 0 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 1, redeliver: 0, elapse: 1.000145678s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 2 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 1 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 2, redeliver: 0, elapse: 1.000085214s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 0 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 2 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 0, redeliver: 1, elapse: 1.00008423s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 1 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 0 0 0 <nil> <nil>}
+time="2020-07-09T17:21:16.614549+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:16.614981+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51518" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:16.615009+08:00" level=info msg="Accepted client" client="127.0.0.1:51518" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+time="2020-07-09T17:21:16.625481+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51518" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:16.635231+08:00" level=info msg="Connecting to broker" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:16.635678+08:00" level=info msg="Accepted client" client="127.0.0.1:51520" name=pulsar-proxy proxy="127.0.0.1:51470" upstream="localhost:6650"
+time="2020-07-09T17:21:16.635683+08:00" level=info msg="TCP connection established" local_addr="127.0.0.1:51520" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:16.656117+08:00" level=info msg="Connection is ready" local_addr="127.0.0.1:51520" remote_addr="pulsar://127.0.0.1:51470"
+time="2020-07-09T17:21:16.665147+08:00" level=info msg="Connected consumer" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+========> grabConn success, startID: <nil>
+time="2020-07-09T17:21:16.665201+08:00" level=info msg="Reconnected consumer to broker" name=proxy_consumer subscription=my-sub topic="persistent://public/default/ack-fail-one-consumer"
+=========> reconnect success - conn: 127.0.0.1:51520 -> 127.0.0.1:51470
+======> redeliver request: {226 2 0 0 <nil> <nil>}
+======> redeliver request: {226 3 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 0, counter: 5, redeliver: 2, elapse: 4.348µs, last: 16.860138893s, nacking
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 3 0 0 <nil> 0xc0001480d0}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 5 0 0 <nil> 0xc0001480d0}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 7 0 0 <nil> 0xc0001480d0}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 9 0 0 <nil> 0xc0001480d0}
+======> redeliver request: {226 0 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 1, redeliver: 1, elapse: 1.000114416s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 2 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 1 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 3, counter: 6, redeliver: 0, elapse: 6.87µs, last: 1.000066336s, nacking
+======> redeliver request: {226 3 0 0 <nil> <nil>}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 3 0 0 <nil> 0xc0001480d0}
+====> ns, messsge: msg-00 - 2, redeliver: 1, elapse: 1.000089092s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 1 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 2 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 4, counter: 7, redeliver: 0, elapse: 9.74µs, last: 1.000219467s, nacking
+======> redeliver request: {226 4 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 1, redeliver: 2, elapse: 1.000104578s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 2 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 1 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 5, counter: 8, redeliver: 0, elapse: 6.981µs, last: 1.000102461s, nacking
+======> redeliver request: {226 5 0 0 <nil> <nil>}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 5 0 0 <nil> 0xc0001480d0}
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 1 0 0 <nil> 0xc00028a340}
+====> ns, messsge: msg-00 - 2, redeliver: 2, elapse: 1.000296196s
+======> redeliver request: {226 2 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 6, counter: 9, redeliver: 0, elapse: 7.26µs, last: 1.000401322s, nacking
+======> redeliver request: {226 6 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 1, redeliver: 3, elapse: 1.000104014s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 2 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 1 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 7, counter: 10, redeliver: 0, elapse: 17.511µs, last: 1.000091749s, nacking
+======> redeliver request: {226 7 0 0 <nil> <nil>}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 7 0 0 <nil> 0xc0001480d0}
+====> ns, messsge: msg-00 - 2, redeliver: 3, elapse: 1.000037475s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 1 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 2 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 8, counter: 11, redeliver: 0, elapse: 6.531µs, last: 1.000066548s, nacking
+======> redeliver request: {226 8 0 0 <nil> <nil>}
+====> ns, messsge: msg-00 - 1, redeliver: 4, elapse: 1.000072089s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 2 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 1 0 0 <nil> <nil>}
+====> s, messsge: msg-00 - 9, counter: 12, redeliver: 0, elapse: 6.178µs, last: 1.00006094s, nacking
+======> redeliver request: {226 9 0 0 <nil> <nil>}
+=======> flow request, id: 1, conn: 127.0.0.1:51520 -> 127.0.0.1:51470, flow request: 2, last message: &{226 9 0 0 <nil> 0xc0001480d0}
+====> ns, messsge: msg-00 - 2, redeliver: 4, elapse: 1.000124779s
+=======> flow request, id: 1, conn: 127.0.0.1:51515 -> 127.0.0.1:6650, flow request: 1, last message: &{226 1 0 0 <nil> 0xc00028a340}
+======> redeliver request: {226 2 0 0 <nil> <nil>}
