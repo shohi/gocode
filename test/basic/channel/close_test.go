@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func TestCloseChannel(t *testing.T) {
+func TestChan_CloseOrNot(t *testing.T) {
 	ch := make(chan error, 10)
 	close(ch)
 	select {
@@ -17,7 +17,7 @@ func TestCloseChannel(t *testing.T) {
 	}
 }
 
-func TestReadFromClosedBufferedChannel(t *testing.T) {
+func TestChan_ReadFromClosedBuffered(t *testing.T) {
 	ch := make(chan int, 10)
 	for k := 0; k < 5; k++ {
 		ch <- k
@@ -73,7 +73,16 @@ func TestChan_CloseAfterSend(t *testing.T) {
 	}()
 
 	wg.Wait()
+}
 
+func TestChan_WriteToClosed(t *testing.T) {
+	ch := make(chan string, 10)
+	close(ch)
+
+	// NOTE: sending on closed channel causes panic
+	ch <- "hello"
+
+	fmt.Println(ch)
 }
 
 type MyStruct struct {
@@ -81,7 +90,7 @@ type MyStruct struct {
 	Val int
 }
 
-func TestChannel_RxFromClosed(t *testing.T) {
+func TestChan_RxFromClosed(t *testing.T) {
 	ch := make(chan MyStruct, 10)
 	ch <- MyStruct{Key: "k1", Val: 1}
 

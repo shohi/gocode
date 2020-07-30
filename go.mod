@@ -7,7 +7,6 @@ go 1.14
 replace (
 	github.com/Shopify/toxiproxy v2.1.4+incompatible => ./dep/github.com/Shopify/toxiproxy
 	github.com/apache/pulsar-client-go v0.1.1 => ./dep/github.com/apache/pulsar-client-go
-	github.com/apache/pulsar-client-go/oauth2@v0.0.1 => ./dep/github.com/apache/pulsar-client-go/oauth2
 	github.com/streamnative/pulsarctl v0.4.2 => ./dep/github.com/streamnative/pulsarctl
 )
 
@@ -80,12 +79,12 @@ require (
 	go.etcd.io/bbolt v1.3.3
 	go.uber.org/goleak v1.0.0
 	go.uber.org/zap v1.13.0
-	golang.org/x/crypto v0.0.0-20200128174031-69ecbb4d6d5d
-	golang.org/x/net v0.0.0-20200520004742-59133d7f0dd7
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
+	golang.org/x/net v0.0.0-20200707034311-ab3426394381
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	golang.org/x/text v0.3.2
 	google.golang.org/grpc v1.27.0
-	google.golang.org/protobuf v1.24.0
+	google.golang.org/protobuf v1.25.0
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7

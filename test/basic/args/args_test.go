@@ -14,6 +14,7 @@ type options struct {
 type Option func(opts *options) error
 
 func WithTimeout(d time.Duration) Option {
+	
 	return func(opts *options) error {
 		opts.timeout = d
 		return nil

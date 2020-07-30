@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func TestChannel_Send_ToNil(t *testing.T) {
+func TestChan_Send_ToNil(t *testing.T) {
 	var ch chan string
 
 	fmt.Printf("===> channel is nil == %v\n", ch == nil)
@@ -21,7 +21,7 @@ func TestChannel_Send_ToNil(t *testing.T) {
 	}
 }
 
-func TestChannel_Reset(t *testing.T) {
+func TestChan_Reset(t *testing.T) {
 	type myStruct struct {
 		ch chan string
 	}

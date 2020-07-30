@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestChannel_Unbuffer_Sender(t *testing.T) {
+func TestChan_Unbuffer_Sender(t *testing.T) {
 	ch := make(chan struct{}, 0)
 	go func() {
 		// NOTE: sender will block until element is taken out

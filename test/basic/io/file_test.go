@@ -1,6 +1,7 @@
 package io_test
 
 import (
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -15,6 +16,7 @@ func TestOutputBytes(t *testing.T) {
 	}
 
 	err = ioutil.WriteFile("testdata/test.dat", b, 0644)
+	io.WriterTo
 
 	if err != nil {
 		t.Errorf("fail to write bytes to file, err: %v", err)

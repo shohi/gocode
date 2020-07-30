@@ -39,3 +39,6 @@ dep/
 
 # tmp files
 tmp/
+
+# module
+go.sum

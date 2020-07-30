@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func TestChannel_WaitOnClosed(t *testing.T) {
+func TestChan_WaitOnClosed(t *testing.T) {
 
 	ch := make(chan string)
 

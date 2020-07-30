@@ -8,25 +8,14 @@ import (
 	"testing"
 )
 
-func TestChannelCapacity(t *testing.T) {
+func TestChan_Capacity(t *testing.T) {
 	ch := make(chan int, 100)
 
 	log.Println(cap(ch))
 	log.Println(len(ch))
 }
 
-func TestChannelSendNil(t *testing.T) {
-	ch := make(chan int)
-	if 2 > 1 {
-		close(ch)
-	}
-
-	// write to closed channel will raise panic
-	// ch <- 10
-
-}
-
-func TestChannelGetFromClosed(t *testing.T) {
+func TestChan_ReadFromClosed(t *testing.T) {
 	// channel will send default value of the type immediately
 	// when it get closed.
 	ch := make(chan string)
@@ -57,7 +46,7 @@ func TestChannelGetFromClosed(t *testing.T) {
 	wg.Wait()
 }
 
-func TestBufferedChannel(t *testing.T) {
+func TestChan_Buffered(t *testing.T) {
 	ch := make(chan int, 2)
 	ch <- 1
 
@@ -68,7 +57,7 @@ func TestBufferedChannel(t *testing.T) {
 
 }
 
-func TestSendNilToChannel(t *testing.T) {
+func TestChan_SendNil(t *testing.T) {
 	ch := make(chan error, 2)
 	ch <- nil
 	ch <- nil
@@ -89,7 +78,7 @@ func TestReceiveFromNilChannel(t *testing.T) {
 }
 */
 
-func TestChannelCopy(t *testing.T) {
+func TestChan_Copy(t *testing.T) {
 	ch := make(chan struct{}, 10)
 
 	var ch2 chan struct{}
