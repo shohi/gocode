@@ -11,6 +11,23 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestProducer_Tenant(t *testing.T) {
+	assert := assert.New(t)
+
+	client := newTestClient(defaultClientOptions())
+	defer client.Close()
+
+	producer, err := client.CreateProducer(pulsar.ProducerOptions{
+		Topic: "persistent://tenant/hello/topic-1",
+	})
+	assert.Nil(err)
+	assert.NotNil(producer)
+
+	if producer != nil {
+		producer.Close()
+	}
+}
+
 // copied from `pulsar-client-go` example folder
 
 func TestProducer_Key(t *testing.T) {

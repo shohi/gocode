@@ -217,6 +217,7 @@ func TestSubscription_Delete(t *testing.T) {
 		Type:             pulsar.Shared,
 	})
 	assert.Nil(err)
+	_ = s
 
 	if err != nil {
 		panic(err)
