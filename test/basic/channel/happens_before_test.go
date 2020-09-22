@@ -10,45 +10,63 @@ package channel_test
  */
 
 import (
-	"log"
+	"fmt"
 	"testing"
+	"time"
 )
 
-func TestHappensBefore_1(t *testing.T) {
+func TestHappensBefore_buffered(t *testing.T) {
 	var c = make(chan int, 10)
-	var a string
 	f := func() {
-		a = "hello, world"
 		c <- 0
+		fmt.Println("send done")
 	}
 
 	go f()
 	<-c
-	print(a)
+
+	fmt.Println("recv done")
+	time.Sleep(1 * time.Second)
 }
 
-func TestHappensBefore_2(t *testing.T) {
+func TestHappensBefore_unbuffered(t *testing.T) {
 	var c = make(chan int)
-	var a string
 	f := func() {
-		a = "hello, world"
-		<-c
+		c <- 0
+		fmt.Println("send done")
 	}
 
 	go f()
-	c <- 0
-	log.Printf("msg: [%v]", a)
+	<-c
+
+	fmt.Println("recv done")
+	time.Sleep(1 * time.Second)
 }
 
 func TestHappensBefore_3(t *testing.T) {
-	var c = make(chan int, 1)
-	var a string
+	var c = make(chan int)
 	f := func() {
-		a = "hello, world"
 		<-c
+		fmt.Println("recv done")
 	}
 
 	go f()
 	c <- 0
-	print(a)
+	fmt.Println("send done")
+
+	time.Sleep(1 * time.Second)
+}
+
+func TestHappensBefore_4(t *testing.T) {
+	var c = make(chan int, 1)
+	f := func() {
+		<-c
+		fmt.Println("recv done")
+	}
+
+	go f()
+	c <- 0
+	fmt.Println("send done")
+
+	time.Sleep(1 * time.Second)
 }

@@ -1,4 +1,4 @@
-package ast_test
+package main_test
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ func TestHello(t *testing.T) {
 	_ = tk
 
 	var f token.FileSet
-	_ = f
+	_ = &f
 
 	var sc scanner.Scanner
 	_ = sc
