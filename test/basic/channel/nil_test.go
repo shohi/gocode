@@ -6,19 +6,39 @@ import (
 	"time"
 )
 
-func TestChan_Send_ToNil(t *testing.T) {
+// NOTE: read from nil channel will block
+func TestChan_ReadFromNil(t *testing.T) {
 	var ch chan string
 
 	fmt.Printf("===> channel is nil == %v\n", ch == nil)
-
 	ch = nil
 
 	select {
-	case <-time.After(1 * time.Second):
-		fmt.Println("send to nil channel blocked")
+	case <-time.After(5 * time.Second):
+		fmt.Println("read from nil channel: blocked")
 	case <-ch:
-		fmt.Println("send to nil channel blocked")
+		fmt.Println("read from nil channel: not blocked")
 	}
+}
+
+// NOTE: send to nil channel will block
+func TestChan_SendToNil(t *testing.T) {
+	var ch chan struct{}
+
+	select {
+	case ch <- struct{}{}:
+		fmt.Println("send to nil channel: not blocked")
+	case <-time.After(5 * time.Second):
+		fmt.Println("send to nil channel: blocked")
+	}
+}
+
+// NOTE: send to closed channel will PANIC
+func TestChan_SendToClosed(t *testing.T) {
+	var ch chan struct{}
+	close(ch)
+
+	ch <- struct{}{}
 }
 
 func TestChan_Reset(t *testing.T) {

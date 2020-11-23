@@ -47,3 +47,9 @@ func TestTimeParse(t *testing.T) {
 	log.Println(tm, err)
 
 }
+
+func TestTime_Add(t *testing.T) {
+	cur := time.Now()
+
+	fmt.Printf("previous: %v", cur.AddDate(0, 0, -1))
+}

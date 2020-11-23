@@ -20,9 +20,7 @@ func TestBitShiftLeft(t *testing.T) {
 	var b uint8
 	b = 1
 
-	log.Println(b)
-	log.Println(b << 1)
-	log.Println(b << 1)
+	log.Printf("%v << 1 : %v\n", b, b<<1)
 }
 
 func TestBitClear(t *testing.T) {

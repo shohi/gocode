@@ -2,14 +2,6 @@ module github.com/shohi/gocode
 
 go 1.14
 
-// replace google.golang.org/grpc => github.com/grpc/grpc-go v1.23.1
-
-replace (
-	github.com/Shopify/toxiproxy v2.1.4+incompatible => ./dep/github.com/Shopify/toxiproxy
-	github.com/apache/pulsar-client-go v0.1.1 => ./dep/github.com/apache/pulsar-client-go
-	github.com/streamnative/pulsarctl v0.4.2 => ./dep/github.com/streamnative/pulsarctl
-)
-
 require (
 	cloud.google.com/go v0.52.0
 	github.com/BurntSushi/toml v0.3.1
@@ -22,7 +14,7 @@ require (
 	github.com/alicebob/miniredis v2.5.0+incompatible
 	github.com/alicebob/miniredis/v2 v2.11.1
 	github.com/allegro/bigcache v1.2.1
-	github.com/apache/pulsar-client-go v0.1.1
+	github.com/apache/pulsar-client-go v0.3.0
 	github.com/atrox/homedir v1.0.0
 	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394
 	github.com/bramvdbogaerde/go-scp v0.0.0-20200119201711-987556b8bdd7
@@ -51,8 +43,6 @@ require (
 	github.com/json-iterator/go v1.1.10
 	github.com/klauspost/cpuid v1.2.3
 	github.com/mitchellh/go-ps v0.0.0-20190716172923-621e5597135b
-	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/nats-io/nats-server/v2 v2.1.4 // indirect
 	github.com/nats-io/nats-streaming-server v0.16.2 // indirect
 	github.com/nats-io/nats.go v1.9.1

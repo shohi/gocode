@@ -1,4 +1,4 @@
-package byte_test
+package bytes_test
 
 import (
 	"bytes"

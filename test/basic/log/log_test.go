@@ -26,4 +26,7 @@ func TestLogFlag(t *testing.T) {
 
 	logger2 := log.New(os.Stderr, pre, 0)
 	logger2.Printf("Hello2")
+
+	logger3 := log.New(os.Stdout, "", 0)
+	logger3.Printf("Hello3")
 }
