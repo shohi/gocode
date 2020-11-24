@@ -12,7 +12,7 @@ require (
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
 	github.com/adlio/trello v1.6.0
 	github.com/alicebob/miniredis v2.5.0+incompatible
-	github.com/alicebob/miniredis/v2 v2.11.1
+	github.com/alicebob/miniredis/v2 v2.14.1
 	github.com/allegro/bigcache v1.2.1
 	github.com/apache/pulsar-client-go v0.3.0
 	github.com/atrox/homedir v1.0.0
@@ -65,7 +65,6 @@ require (
 	github.com/tealeg/xlsx v1.0.5
 	github.com/valyala/fasthttp v1.8.0
 	github.com/whilp/git-urls v0.0.0-20191001220047-6db9661140c0
-	github.com/yuin/gopher-lua v0.0.0-20191220021717-ab39c6098bdb // indirect
 	go.etcd.io/bbolt v1.3.3
 	go.uber.org/goleak v1.0.0
 	go.uber.org/zap v1.13.0
