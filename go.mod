@@ -63,15 +63,15 @@ require (
 	github.com/streamnative/pulsarctl v0.4.2
 	github.com/stretchr/testify v1.4.0
 	github.com/tealeg/xlsx v1.0.5
-	github.com/valyala/fasthttp v1.8.0
+	github.com/valyala/fasthttp v1.16.0
 	github.com/whilp/git-urls v0.0.0-20191001220047-6db9661140c0
 	go.etcd.io/bbolt v1.3.3
 	go.uber.org/goleak v1.0.0
 	go.uber.org/zap v1.13.0
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-	golang.org/x/net v0.0.0-20200707034311-ab3426394381
+	golang.org/x/net v0.0.0-20201016165138-7b1cca2348c0
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
-	golang.org/x/text v0.3.2
+	golang.org/x/text v0.3.3
 	google.golang.org/grpc v1.27.0
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect

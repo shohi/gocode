@@ -36,7 +36,8 @@ func TestStringConvert(t *testing.T) {
 }
 func TestStringFromInt(t *testing.T) {
 	// not work
-	log.Println(string(10))
+	// log.Println(fmt.Sprint(10))
+	// log.Println(string(10))
 
 	//
 	log.Println(strconv.Itoa(10))
