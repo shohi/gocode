@@ -1,4 +1,4 @@
-package closure
+package closure_test
 
 import (
 	"log"
