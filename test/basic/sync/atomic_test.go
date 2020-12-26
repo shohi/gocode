@@ -17,3 +17,7 @@ func TestAtomic_Value(t *testing.T) {
 
 	fmt.Println(aa)
 }
+
+func TestAtomic_Int(t *testing.T) {
+
+}

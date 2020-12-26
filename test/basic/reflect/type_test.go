@@ -25,3 +25,20 @@ func TestReflect_TypeEqual(t *testing.T) {
 	fmt.Printf("a.Type == b.Type: %v\n", typA == typB)
 	fmt.Printf("a.Type == c.Type: %v\n", typA == typC)
 }
+
+func TestReflectType_Byte(t *testing.T) {
+	type MyInt int
+
+	var a byte
+	var b MyInt
+	fmt.Printf("a type: %v, addr type: %v\n",
+		reflect.TypeOf(a),
+		reflect.TypeOf(&a),
+	)
+
+	fmt.Printf("b type: %v, addr type: %v\n",
+		reflect.TypeOf(b),
+		reflect.TypeOf(&b),
+	)
+
+}
