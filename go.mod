@@ -42,6 +42,7 @@ require (
 	github.com/jinzhu/now v1.1.1
 	github.com/json-iterator/go v1.1.10
 	github.com/klauspost/cpuid v1.2.3
+	github.com/mholt/archiver/v3 v3.5.0
 	github.com/mitchellh/go-ps v0.0.0-20190716172923-621e5597135b
 	github.com/nats-io/nats-server/v2 v2.1.4 // indirect
 	github.com/nats-io/nats-streaming-server v0.16.2 // indirect
@@ -63,6 +64,7 @@ require (
 	github.com/streamnative/pulsarctl v0.4.2
 	github.com/stretchr/testify v1.4.0
 	github.com/tealeg/xlsx v1.0.5
+	github.com/ulikunitz/xz v0.5.9 // indirect
 	github.com/valyala/fasthttp v1.16.0
 	github.com/whilp/git-urls v0.0.0-20191001220047-6db9661140c0
 	go.etcd.io/bbolt v1.3.3
