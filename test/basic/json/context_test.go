@@ -14,6 +14,7 @@ func TestJsonMarshal_Context(t *testing.T) {
 		reflect.TypeOf(ctx), reflect.TypeOf(ctx).Elem())
 
 	data, _ := json.Marshal(ctx)
+	// Output: ?
 	fmt.Printf("content: [%v]\n", string(data))
 }
 
