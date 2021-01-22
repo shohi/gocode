@@ -60,6 +60,7 @@ func TestMarshal_Embed(t *testing.T) {
 	// {"Name":"n1","Key":"out-key"}
 }
 
+/*
 func TestMarshal_EmbedPointer(t *testing.T) {
 	type Inner struct {
 		Key string
@@ -84,14 +85,15 @@ func TestMarshal_EmbedPointer(t *testing.T) {
 	// Output:
 	// {"inner":{"Val":"v2"},"ctx":0,"Val":"v1"}
 }
+*/
 
 func TestMarshal_EmbedInterface(t *testing.T) {
-	type Inner struct {
+	type inner struct {
 		Val string
 	}
 
 	var a struct {
-		Inner           `json:"inner"`
+		inner           `json:"inner"`
 		context.Context `json:"ctx"`
 		Item            struct {
 			Count int
@@ -100,7 +102,7 @@ func TestMarshal_EmbedInterface(t *testing.T) {
 	}
 
 	a.Context = context.Background()
-	a.Inner.Val = "v2"
+	a.inner.Val = "v2"
 	a.Val = "v1"
 	a.Item.Count = 1
 
