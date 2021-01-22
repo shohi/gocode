@@ -6,6 +6,19 @@ import (
 	"testing"
 )
 
+func TestMarshal_MapNormal(t *testing.T) {
+	var m = map[string]int{
+		"k1": 1,
+		"k2": 2,
+	}
+
+	data, err := json.Marshal(m)
+	fmt.Printf("json: %v, err: %v\n", string(data), err)
+
+	// Output:
+	// {"k1":1,"k2":2}
+}
+
 func TestMarshal_Map(t *testing.T) {
 	type MyStruct struct {
 		Key string
@@ -17,9 +30,7 @@ func TestMarshal_Map(t *testing.T) {
 	}
 
 	data, err := json.Marshal(m)
-	fmt.Printf("content: [%v], err: %v\n",
-		string(data), err)
-
+	fmt.Printf("json: %v, err: %v\n", string(data), err)
 }
 
 func TestMarshal_ArrayAndSlice(t *testing.T) {
